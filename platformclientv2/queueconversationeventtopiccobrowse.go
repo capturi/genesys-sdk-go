@@ -1,12 +1,12 @@
 package platformclientv2
 
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Queueconversationeventtopiccobrowse
