@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Flow
-type Flow struct { 
+type Flow struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The flow identifier
@@ -29,7 +30,7 @@ type Flow struct {
 	// LockedUser - User that has the flow locked.
 	LockedUser *User `json:"lockedUser,omitempty"`
 
-	// LockedClient - OAuth client that has the flow locked.
+	// LockedClient - OAuth Client that has the flow locked.
 	LockedClient *Domainentityref `json:"lockedClient,omitempty"`
 
 	// Active
@@ -107,9 +108,9 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -118,7 +119,7 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -137,99 +138,99 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Flow
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		Division *Writabledivision `json:"division,omitempty"`
-		
+
 		Description *string `json:"description,omitempty"`
-		
+
 		VarType *string `json:"type,omitempty"`
-		
+
 		LockedUser *User `json:"lockedUser,omitempty"`
-		
+
 		LockedClient *Domainentityref `json:"lockedClient,omitempty"`
-		
+
 		Active *bool `json:"active,omitempty"`
-		
+
 		System *bool `json:"system,omitempty"`
-		
+
 		Deleted *bool `json:"deleted,omitempty"`
-		
+
 		PublishedVersion *Flowversion `json:"publishedVersion,omitempty"`
-		
+
 		SavedVersion *Flowversion `json:"savedVersion,omitempty"`
-		
+
 		InputSchema *interface{} `json:"inputSchema,omitempty"`
-		
+
 		OutputSchema *interface{} `json:"outputSchema,omitempty"`
-		
+
 		CheckedInVersion *Flowversion `json:"checkedInVersion,omitempty"`
-		
+
 		DebugVersion *Flowversion `json:"debugVersion,omitempty"`
-		
+
 		PublishedBy *User `json:"publishedBy,omitempty"`
-		
+
 		CurrentOperation *Operation `json:"currentOperation,omitempty"`
-		
+
 		NluInfo *Nluinfo `json:"nluInfo,omitempty"`
-		
+
 		SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
-		
+
 		CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		Division: o.Division,
-		
+
 		Description: o.Description,
-		
+
 		VarType: o.VarType,
-		
+
 		LockedUser: o.LockedUser,
-		
+
 		LockedClient: o.LockedClient,
-		
+
 		Active: o.Active,
-		
+
 		System: o.System,
-		
+
 		Deleted: o.Deleted,
-		
+
 		PublishedVersion: o.PublishedVersion,
-		
+
 		SavedVersion: o.SavedVersion,
-		
+
 		InputSchema: o.InputSchema,
-		
+
 		OutputSchema: o.OutputSchema,
-		
+
 		CheckedInVersion: o.CheckedInVersion,
-		
+
 		DebugVersion: o.DebugVersion,
-		
+
 		PublishedBy: o.PublishedBy,
-		
+
 		CurrentOperation: o.CurrentOperation,
-		
+
 		NluInfo: o.NluInfo,
-		
+
 		SupportedLanguages: o.SupportedLanguages,
-		
+
 		CompatibleFlowTypes: o.CompatibleFlowTypes,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -239,109 +240,108 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := FlowMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := FlowMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if Division, ok := FlowMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
 	}
-	
+
 	if Description, ok := FlowMap["description"].(string); ok {
 		o.Description = &Description
 	}
-    
+
 	if VarType, ok := FlowMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-    
+
 	if LockedUser, ok := FlowMap["lockedUser"].(map[string]interface{}); ok {
 		LockedUserString, _ := json.Marshal(LockedUser)
 		json.Unmarshal(LockedUserString, &o.LockedUser)
 	}
-	
+
 	if LockedClient, ok := FlowMap["lockedClient"].(map[string]interface{}); ok {
 		LockedClientString, _ := json.Marshal(LockedClient)
 		json.Unmarshal(LockedClientString, &o.LockedClient)
 	}
-	
+
 	if Active, ok := FlowMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-    
+
 	if System, ok := FlowMap["system"].(bool); ok {
 		o.System = &System
 	}
-    
+
 	if Deleted, ok := FlowMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-    
+
 	if PublishedVersion, ok := FlowMap["publishedVersion"].(map[string]interface{}); ok {
 		PublishedVersionString, _ := json.Marshal(PublishedVersion)
 		json.Unmarshal(PublishedVersionString, &o.PublishedVersion)
 	}
-	
+
 	if SavedVersion, ok := FlowMap["savedVersion"].(map[string]interface{}); ok {
 		SavedVersionString, _ := json.Marshal(SavedVersion)
 		json.Unmarshal(SavedVersionString, &o.SavedVersion)
 	}
-	
+
 	if InputSchema, ok := FlowMap["inputSchema"].(map[string]interface{}); ok {
 		InputSchemaString, _ := json.Marshal(InputSchema)
 		json.Unmarshal(InputSchemaString, &o.InputSchema)
 	}
-	
+
 	if OutputSchema, ok := FlowMap["outputSchema"].(map[string]interface{}); ok {
 		OutputSchemaString, _ := json.Marshal(OutputSchema)
 		json.Unmarshal(OutputSchemaString, &o.OutputSchema)
 	}
-	
+
 	if CheckedInVersion, ok := FlowMap["checkedInVersion"].(map[string]interface{}); ok {
 		CheckedInVersionString, _ := json.Marshal(CheckedInVersion)
 		json.Unmarshal(CheckedInVersionString, &o.CheckedInVersion)
 	}
-	
+
 	if DebugVersion, ok := FlowMap["debugVersion"].(map[string]interface{}); ok {
 		DebugVersionString, _ := json.Marshal(DebugVersion)
 		json.Unmarshal(DebugVersionString, &o.DebugVersion)
 	}
-	
+
 	if PublishedBy, ok := FlowMap["publishedBy"].(map[string]interface{}); ok {
 		PublishedByString, _ := json.Marshal(PublishedBy)
 		json.Unmarshal(PublishedByString, &o.PublishedBy)
 	}
-	
+
 	if CurrentOperation, ok := FlowMap["currentOperation"].(map[string]interface{}); ok {
 		CurrentOperationString, _ := json.Marshal(CurrentOperation)
 		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)
 	}
-	
+
 	if NluInfo, ok := FlowMap["nluInfo"].(map[string]interface{}); ok {
 		NluInfoString, _ := json.Marshal(NluInfo)
 		json.Unmarshal(NluInfoString, &o.NluInfo)
 	}
-	
+
 	if SupportedLanguages, ok := FlowMap["supportedLanguages"].([]interface{}); ok {
 		SupportedLanguagesString, _ := json.Marshal(SupportedLanguages)
 		json.Unmarshal(SupportedLanguagesString, &o.SupportedLanguages)
 	}
-	
+
 	if CompatibleFlowTypes, ok := FlowMap["compatibleFlowTypes"].([]interface{}); ok {
 		CompatibleFlowTypesString, _ := json.Marshal(CompatibleFlowTypes)
 		json.Unmarshal(CompatibleFlowTypesString, &o.CompatibleFlowTypes)
 	}
-	
+
 	if SelfUri, ok := FlowMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

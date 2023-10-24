@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Geolocation
-type Geolocation struct { 
+type Geolocation struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -17,10 +18,10 @@ type Geolocation struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
-	// VarType - A string used to describe the type of client the geolocation is being updated from e.g. ios, android, web, etc.
+	// VarType - A string used to describe the type of Client the geolocation is being updated from e.g. ios, android, web, etc.
 	VarType *string `json:"type,omitempty"`
 
-	// Primary - A boolean used to tell whether or not to set this geolocation client as the primary on a PATCH
+	// Primary - A boolean used to tell whether or not to set this geolocation Client as the primary on a PATCH
 	Primary *bool `json:"primary,omitempty"`
 
 	// Latitude
@@ -74,9 +75,9 @@ func (o Geolocation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -85,7 +86,7 @@ func (o Geolocation) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -104,55 +105,55 @@ func (o Geolocation) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Geolocation
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		VarType *string `json:"type,omitempty"`
-		
+
 		Primary *bool `json:"primary,omitempty"`
-		
+
 		Latitude *float64 `json:"latitude,omitempty"`
-		
+
 		Longitude *float64 `json:"longitude,omitempty"`
-		
+
 		Country *string `json:"country,omitempty"`
-		
+
 		Region *string `json:"region,omitempty"`
-		
+
 		City *string `json:"city,omitempty"`
-		
+
 		Locations *[]Locationdefinition `json:"locations,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		VarType: o.VarType,
-		
+
 		Primary: o.Primary,
-		
+
 		Latitude: o.Latitude,
-		
+
 		Longitude: o.Longitude,
-		
+
 		Country: o.Country,
-		
+
 		Region: o.Region,
-		
+
 		City: o.City,
-		
+
 		Locations: o.Locations,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -162,52 +163,51 @@ func (o *Geolocation) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := GeolocationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := GeolocationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if VarType, ok := GeolocationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-    
+
 	if Primary, ok := GeolocationMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-    
+
 	if Latitude, ok := GeolocationMap["latitude"].(float64); ok {
 		o.Latitude = &Latitude
 	}
-    
+
 	if Longitude, ok := GeolocationMap["longitude"].(float64); ok {
 		o.Longitude = &Longitude
 	}
-    
+
 	if Country, ok := GeolocationMap["country"].(string); ok {
 		o.Country = &Country
 	}
-    
+
 	if Region, ok := GeolocationMap["region"].(string); ok {
 		o.Region = &Region
 	}
-    
+
 	if City, ok := GeolocationMap["city"].(string); ok {
 		o.City = &City
 	}
-    
+
 	if Locations, ok := GeolocationMap["locations"].([]interface{}); ok {
 		LocationsString, _ := json.Marshal(Locations)
 		json.Unmarshal(LocationsString, &o.Locations)
 	}
-	
+
 	if SelfUri, ok := GeolocationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

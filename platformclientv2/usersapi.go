@@ -1,12 +1,12 @@
 package platformclientv2
 
 import (
-	"strings"
-	"fmt"
-	"errors"
-	"net/url"
 	"encoding/json"
-	)
+	"errors"
+	"fmt"
+	"net/url"
+	"strings"
+)
 
 // UsersApi provides functions for API endpoints
 type UsersApi struct {
@@ -56,16 +56,15 @@ func (a UsersApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse, er
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -77,7 +76,7 @@ func (a UsersApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse, er
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -143,16 +142,15 @@ func (a UsersApi) DeleteAuthorizationSubjectDivisionRole(subjectId string, divis
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -164,7 +162,7 @@ func (a UsersApi) DeleteAuthorizationSubjectDivisionRole(subjectId string, divis
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -218,16 +216,15 @@ func (a UsersApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, err
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -239,7 +236,7 @@ func (a UsersApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, err
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -294,16 +291,15 @@ func (a UsersApi) DeleteUser(userId string) (*interface{}, *APIResponse, error) 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -315,7 +311,7 @@ func (a UsersApi) DeleteUser(userId string) (*interface{}, *APIResponse, error) 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -381,16 +377,15 @@ func (a UsersApi) DeleteUserRoutinglanguage(userId string, languageId string) (*
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -402,7 +397,7 @@ func (a UsersApi) DeleteUserRoutinglanguage(userId string, languageId string) (*
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -462,16 +457,15 @@ func (a UsersApi) DeleteUserRoutingskill(userId string, skillId string) (*APIRes
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -483,7 +477,7 @@ func (a UsersApi) DeleteUserRoutingskill(userId string, skillId string) (*APIRes
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -537,16 +531,15 @@ func (a UsersApi) DeleteUserStationAssociatedstation(userId string) (*APIRespons
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -558,7 +551,7 @@ func (a UsersApi) DeleteUserStationAssociatedstation(userId string) (*APIRespons
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -612,16 +605,15 @@ func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -633,7 +625,7 @@ func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -662,7 +654,7 @@ func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, 
 
 // GetAnalyticsUsersAggregatesJob invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}
 //
-// Get status for async query for user aggregates
+// # Get status for async query for user aggregates
 //
 // Preview: GetAnalyticsUsersAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
@@ -690,16 +682,15 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatu
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -711,7 +702,7 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatu
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -746,7 +737,7 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatu
 
 // GetAnalyticsUsersAggregatesJobResults invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}/results
 //
-// Fetch a page of results for an async aggregates query
+// # Fetch a page of results for an async aggregates query
 //
 // Preview: GetAnalyticsUsersAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor string) (*Userasyncaggregatequeryresponse, *APIResponse, error) {
@@ -774,18 +765,17 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor str
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -797,7 +787,7 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor str
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -858,16 +848,15 @@ func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -879,7 +868,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -940,20 +929,19 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -965,7 +953,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1010,7 +998,6 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityr
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -1020,16 +1007,15 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityr
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1041,7 +1027,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityr
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1105,20 +1091,19 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
-	
-	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1130,7 +1115,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1190,22 +1175,21 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1217,7 +1201,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1287,22 +1271,21 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1314,7 +1297,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1375,16 +1358,15 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1396,7 +1378,7 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1441,7 +1423,6 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -1451,16 +1432,15 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1472,7 +1452,7 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1507,7 +1487,7 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
-// Fetch field config for an entity type
+// # Fetch field config for an entity type
 //
 // Deprecated: GetFieldconfig is deprecated
 func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
@@ -1534,18 +1514,17 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1557,7 +1536,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1592,7 +1571,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 
 // GetProfilesUsers invokes GET /api/v2/profiles/users
 //
-// Get a user profile listing
+// # Get a user profile listing
 //
 // This api is deprecated. User /api/v2/users
 //
@@ -1606,7 +1585,6 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -1616,30 +1594,29 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
-	
-	queryParams["jid"] = a.Configuration.APIClient.ParameterToString(jid, "multi")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+
+	queryParams["jid"] = a.Configuration.APIClient.ParameterToString(jid, "multi")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1651,7 +1628,7 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1712,16 +1689,15 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1733,7 +1709,7 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1794,22 +1770,21 @@ func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSou
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
-	
-	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+
+	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1821,7 +1796,7 @@ func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSou
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1882,18 +1857,17 @@ func (a UsersApi) GetUserAdjacents(userId string, expand []string) (*Adjacents, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1905,7 +1879,7 @@ func (a UsersApi) GetUserAdjacents(userId string, expand []string) (*Adjacents, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1966,16 +1940,15 @@ func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIRes
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -1987,7 +1960,7 @@ func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIRes
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2048,18 +2021,17 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2071,7 +2043,7 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2134,24 +2106,23 @@ func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2163,7 +2134,7 @@ func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2230,16 +2201,15 @@ func (a UsersApi) GetUserGeolocation(userId string, clientId string) (*Geolocati
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2251,7 +2221,7 @@ func (a UsersApi) GetUserGeolocation(userId string, clientId string) (*Geolocati
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2312,16 +2282,15 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2333,7 +2302,7 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2368,7 +2337,7 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 
 // GetUserProfile invokes GET /api/v2/users/{userId}/profile
 //
-// Get user profile
+// # Get user profile
 //
 // This api has been deprecated. Use api/v2/users instead
 //
@@ -2398,20 +2367,19 @@ func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPres
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2423,7 +2391,7 @@ func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPres
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2484,16 +2452,15 @@ func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, e
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2505,7 +2472,7 @@ func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, e
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2566,24 +2533,23 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joi
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
-	
-	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
+
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2595,7 +2561,7 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joi
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2656,16 +2622,15 @@ func (a UsersApi) GetUserRoles(subjectId string) (*Userauthorization, *APIRespon
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2677,7 +2642,7 @@ func (a UsersApi) GetUserRoles(subjectId string) (*Userauthorization, *APIRespon
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2738,22 +2703,21 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumbe
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2765,7 +2729,7 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumbe
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2826,22 +2790,21 @@ func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber i
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2853,7 +2816,7 @@ func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber i
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2914,16 +2877,15 @@ func (a UsersApi) GetUserRoutingstatus(userId string) (*Routingstatus, *APIRespo
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -2935,7 +2897,7 @@ func (a UsersApi) GetUserRoutingstatus(userId string) (*Routingstatus, *APIRespo
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2996,22 +2958,21 @@ func (a UsersApi) GetUserSkillgroups(userId string, pageSize int, after string, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3023,7 +2984,7 @@ func (a UsersApi) GetUserSkillgroups(userId string, pageSize int, after string, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3084,16 +3045,15 @@ func (a UsersApi) GetUserState(userId string) (*Userstate, *APIResponse, error) 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3105,7 +3065,7 @@ func (a UsersApi) GetUserState(userId string) (*Userstate, *APIResponse, error) 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3166,16 +3126,15 @@ func (a UsersApi) GetUserStation(userId string) (*Userstations, *APIResponse, er
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3187,7 +3146,7 @@ func (a UsersApi) GetUserStation(userId string) (*Userstations, *APIResponse, er
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3248,18 +3207,17 @@ func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *API
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3271,7 +3229,7 @@ func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *API
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3332,20 +3290,19 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3357,7 +3314,7 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3402,7 +3359,6 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -3412,32 +3368,31 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
-	
-	queryParams["jabberId"] = a.Configuration.APIClient.ParameterToString(jabberId, "multi")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
-	
-	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+
+	queryParams["jabberId"] = a.Configuration.APIClient.ParameterToString(jabberId, "multi")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+
+	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3449,7 +3404,7 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3484,7 +3439,7 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 
 // GetUsersDevelopmentActivities invokes GET /api/v2/users/development/activities
 //
-// Get list of Development Activities
+// # Get list of Development Activities
 //
 // Either moduleId or userId is required. Results are filtered based on the applicable permissions.
 func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string, interval string, completionInterval string, overdue string, pass string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
@@ -3496,7 +3451,6 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -3506,40 +3460,39 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["userId"] = a.Configuration.APIClient.ParameterToString(userId, "multi")
-	
-	queryParams["moduleId"] = a.Configuration.APIClient.ParameterToString(moduleId, "")
-	
-	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
-	
-	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
-	
-	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
-	
-	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
-	queryParams["types"] = a.Configuration.APIClient.ParameterToString(types, "multi")
-	
-	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
-	
-	queryParams["relationship"] = a.Configuration.APIClient.ParameterToString(relationship, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["userId"] = a.Configuration.APIClient.ParameterToString(userId, "multi")
+
+	queryParams["moduleId"] = a.Configuration.APIClient.ParameterToString(moduleId, "")
+
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
+
+	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
+
+	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
+
+	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
+
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	queryParams["types"] = a.Configuration.APIClient.ParameterToString(types, "multi")
+
+	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
+
+	queryParams["relationship"] = a.Configuration.APIClient.ParameterToString(relationship, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3551,7 +3504,7 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3586,7 +3539,7 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 
 // GetUsersDevelopmentActivitiesMe invokes GET /api/v2/users/development/activities/me
 //
-// Get list of Development Activities for current user
+// # Get list of Development Activities for current user
 //
 // Results are filtered based on the applicable permissions.
 func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval string, completionInterval string, overdue string, pass string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
@@ -3598,7 +3551,6 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -3608,38 +3560,37 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["moduleId"] = a.Configuration.APIClient.ParameterToString(moduleId, "")
-	
-	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
-	
-	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
-	
-	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
-	
-	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
-	queryParams["types"] = a.Configuration.APIClient.ParameterToString(types, "multi")
-	
-	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
-	
-	queryParams["relationship"] = a.Configuration.APIClient.ParameterToString(relationship, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["moduleId"] = a.Configuration.APIClient.ParameterToString(moduleId, "")
+
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
+
+	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
+
+	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
+
+	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
+
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+
+	queryParams["types"] = a.Configuration.APIClient.ParameterToString(types, "multi")
+
+	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
+
+	queryParams["relationship"] = a.Configuration.APIClient.ParameterToString(relationship, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3651,7 +3602,7 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3686,7 +3637,7 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 
 // GetUsersDevelopmentActivity invokes GET /api/v2/users/development/activities/{activityId}
 //
-// Get a Development Activity
+// # Get a Development Activity
 //
 // Permission not required if you are the attendee, creator or facilitator of the coaching appointment or you are the assigned user of the learning assignment.
 func (a UsersApi) GetUsersDevelopmentActivity(activityId string, varType string) (*Developmentactivity, *APIResponse, error) {
@@ -3719,18 +3670,17 @@ func (a UsersApi) GetUsersDevelopmentActivity(activityId string, varType string)
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3742,7 +3692,7 @@ func (a UsersApi) GetUsersDevelopmentActivity(activityId string, varType string)
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3789,7 +3739,6 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -3799,20 +3748,19 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3824,7 +3772,7 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3884,22 +3832,21 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenc
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
+
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3911,7 +3858,7 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenc
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -3977,16 +3924,15 @@ func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -3998,7 +3944,7 @@ func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4067,16 +4013,15 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4088,7 +4033,7 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4126,9 +4071,9 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 
 // PatchUserGeolocation invokes PATCH /api/v2/users/{userId}/geolocations/{clientId}
 //
-// Patch a user's Geolocation
+// # Patch a user's Geolocation
 //
-// The geolocation object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the client as the user&#39;s primary geolocation source.  Option 2: Provide the &#39;latitude&#39; and &#39;longitude&#39; values.  This will enqueue an asynchronous update of the &#39;city&#39;, &#39;region&#39;, and &#39;country&#39;, generating a notification. A subsequent GET operation will include the new values for &#39;city&#39;, &#39;region&#39; and &#39;country&#39;.  Option 3:  Provide the &#39;city&#39;, &#39;region&#39;, &#39;country&#39; values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
+// The geolocation object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the Client as the user&#39;s primary geolocation source.  Option 2: Provide the &#39;latitude&#39; and &#39;longitude&#39; values.  This will enqueue an asynchronous update of the &#39;city&#39;, &#39;region&#39;, and &#39;country&#39;, generating a notification. A subsequent GET operation will include the new values for &#39;city&#39;, &#39;region&#39; and &#39;country&#39;.  Option 3:  Provide the &#39;city&#39;, &#39;region&#39;, &#39;country&#39; values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the Client as primary and provide latitude and longitude values.
 func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geolocation) (*Geolocation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4165,16 +4110,15 @@ func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geol
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4186,7 +4130,7 @@ func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geol
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4261,16 +4205,15 @@ func (a UsersApi) PatchUserQueue(queueId string, userId string, body Userqueue) 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4282,7 +4225,7 @@ func (a UsersApi) PatchUserQueue(queueId string, userId string, body Userqueue) 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4351,18 +4294,17 @@ func (a UsersApi) PatchUserQueues(userId string, body []Userqueue, divisionId []
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4374,7 +4316,7 @@ func (a UsersApi) PatchUserQueues(userId string, body []Userqueue, divisionId []
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4449,16 +4391,15 @@ func (a UsersApi) PatchUserRoutinglanguage(userId string, languageId string, bod
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4470,7 +4411,7 @@ func (a UsersApi) PatchUserRoutinglanguage(userId string, languageId string, bod
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4539,16 +4480,15 @@ func (a UsersApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutin
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4560,7 +4500,7 @@ func (a UsersApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutin
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4629,16 +4569,15 @@ func (a UsersApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingsk
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4650,7 +4589,7 @@ func (a UsersApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingsk
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4713,16 +4652,15 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4734,7 +4672,7 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4772,7 +4710,7 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 
 // PostAnalyticsUsersActivityQuery invokes POST /api/v2/analytics/users/activity/query
 //
-// Query for user activity observations
+// # Query for user activity observations
 //
 // Preview: PostAnalyticsUsersActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSize int, pageNumber int) (*Useractivityresponse, *APIResponse, error) {
@@ -4799,20 +4737,19 @@ func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSi
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4824,7 +4761,7 @@ func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSi
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4862,7 +4799,7 @@ func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSi
 
 // PostAnalyticsUsersAggregatesJobs invokes POST /api/v2/analytics/users/aggregates/jobs
 //
-// Query for user aggregates asynchronously
+// # Query for user aggregates asynchronously
 //
 // Preview: PostAnalyticsUsersAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
@@ -4889,16 +4826,15 @@ func (a UsersApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregationquer
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4910,7 +4846,7 @@ func (a UsersApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregationquer
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -4973,16 +4909,15 @@ func (a UsersApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -4994,7 +4929,7 @@ func (a UsersApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5057,16 +4992,15 @@ func (a UsersApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*As
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5078,7 +5012,7 @@ func (a UsersApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*As
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5141,16 +5075,15 @@ func (a UsersApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyt
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5162,7 +5095,7 @@ func (a UsersApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyt
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5225,16 +5158,15 @@ func (a UsersApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery)
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5246,7 +5178,7 @@ func (a UsersApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery)
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5314,18 +5246,17 @@ func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Rolediv
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5337,7 +5268,7 @@ func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Rolediv
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5356,7 +5287,6 @@ func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Rolediv
 	}
 	// body params
 	postBody = &body
-
 
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -5399,16 +5329,15 @@ func (a UsersApi) PostAuthorizationSubjectBulkremove(subjectId string, body Role
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5420,7 +5349,7 @@ func (a UsersApi) PostAuthorizationSubjectBulkremove(subjectId string, body Role
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5439,7 +5368,6 @@ func (a UsersApi) PostAuthorizationSubjectBulkremove(subjectId string, body Role
 	}
 	// body params
 	postBody = &body
-
 
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -5484,18 +5412,17 @@ func (a UsersApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Rol
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5507,7 +5434,7 @@ func (a UsersApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Rol
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5526,7 +5453,6 @@ func (a UsersApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Rol
 	}
 	// body params
 	postBody = &body
-
 
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -5576,18 +5502,17 @@ func (a UsersApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisio
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5599,7 +5524,7 @@ func (a UsersApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisio
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5661,16 +5586,15 @@ func (a UsersApi) PostUserExternalid(userId string, body Userexternalidentifier)
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5682,7 +5606,7 @@ func (a UsersApi) PostUserExternalid(userId string, body Userexternalidentifier)
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5745,18 +5669,17 @@ func (a UsersApi) PostUserInvite(userId string, force bool) (*APIResponse, error
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5768,7 +5691,7 @@ func (a UsersApi) PostUserInvite(userId string, force bool) (*APIResponse, error
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5827,16 +5750,15 @@ func (a UsersApi) PostUserPassword(userId string, body Changepasswordrequest) (*
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5848,7 +5770,7 @@ func (a UsersApi) PostUserPassword(userId string, body Changepasswordrequest) (*
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -5867,7 +5789,6 @@ func (a UsersApi) PostUserPassword(userId string, body Changepasswordrequest) (*
 	}
 	// body params
 	postBody = &body
-
 
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -5911,16 +5832,15 @@ func (a UsersApi) PostUserRoutinglanguages(userId string, body Userroutinglangua
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -5932,7 +5852,7 @@ func (a UsersApi) PostUserRoutinglanguages(userId string, body Userroutinglangua
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6001,16 +5921,15 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6022,7 +5941,7 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6060,7 +5979,7 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 
 // PostUsers invokes POST /api/v2/users
 //
-// Create user
+// # Create user
 //
 // If user creation is successful but the provided password is invalid or configuration fails, POST api/v2/users/{userId}/password can be used to re-attempt password configuration.
 func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
@@ -6087,16 +6006,15 @@ func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6108,7 +6026,7 @@ func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6146,7 +6064,7 @@ func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 
 // PostUsersDevelopmentActivitiesAggregatesQuery invokes POST /api/v2/users/development/activities/aggregates/query
 //
-// Retrieve aggregated development activity data
+// # Retrieve aggregated development activity data
 //
 // Results are filtered based on the applicable permissions.
 func (a UsersApi) PostUsersDevelopmentActivitiesAggregatesQuery(body Developmentactivityaggregateparam) (*Developmentactivityaggregateresponse, *APIResponse, error) {
@@ -6173,16 +6091,15 @@ func (a UsersApi) PostUsersDevelopmentActivitiesAggregatesQuery(body Development
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6194,7 +6111,7 @@ func (a UsersApi) PostUsersDevelopmentActivitiesAggregatesQuery(body Development
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6256,16 +6173,15 @@ func (a UsersApi) PostUsersMePassword(body Changemypasswordrequest) (*APIRespons
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6277,7 +6193,7 @@ func (a UsersApi) PostUsersMePassword(body Changemypasswordrequest) (*APIRespons
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6296,7 +6212,6 @@ func (a UsersApi) PostUsersMePassword(body Changemypasswordrequest) (*APIRespons
 	}
 	// body params
 	postBody = &body
-
 
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -6334,16 +6249,15 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6355,7 +6269,7 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6393,7 +6307,7 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 
 // PostUsersSearchConversationTarget invokes POST /api/v2/users/search/conversation/target
 //
-// Search users as conversation targets
+// # Search users as conversation targets
 //
 // Preview: PostUsersSearchConversationTarget is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
@@ -6420,16 +6334,15 @@ func (a UsersApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Us
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6441,7 +6354,7 @@ func (a UsersApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Us
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6479,7 +6392,7 @@ func (a UsersApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Us
 
 // PostUsersSearchQueuemembersManage invokes POST /api/v2/users/search/queuemembers/manage
 //
-// Search manage queue member
+// # Search manage queue member
 //
 // Preview: PostUsersSearchQueuemembersManage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostUsersSearchQueuemembersManage(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
@@ -6506,16 +6419,15 @@ func (a UsersApi) PostUsersSearchQueuemembersManage(body Usersearchrequest) (*Us
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6527,7 +6439,7 @@ func (a UsersApi) PostUsersSearchQueuemembersManage(body Usersearchrequest) (*Us
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6590,16 +6502,15 @@ func (a UsersApi) PostUsersSearchTeamsAssign(body Usersearchrequest) (*Userssear
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6611,7 +6522,7 @@ func (a UsersApi) PostUsersSearchTeamsAssign(body Usersearchrequest) (*Userssear
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6680,16 +6591,15 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*A
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6701,7 +6611,7 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*A
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6770,16 +6680,15 @@ func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Ca
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6791,7 +6700,7 @@ func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Ca
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6860,16 +6769,15 @@ func (a UsersApi) PutUserOutofoffice(userId string, body Outofoffice) (*Outofoff
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6881,7 +6789,7 @@ func (a UsersApi) PutUserOutofoffice(userId string, body Outofoffice) (*Outofoff
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -6950,16 +6858,15 @@ func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, 
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -6971,7 +6878,7 @@ func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, 
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7040,16 +6947,15 @@ func (a UsersApi) PutUserRoles(subjectId string, body []string) (*Userauthorizat
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7061,7 +6967,7 @@ func (a UsersApi) PutUserRoles(subjectId string, body []string) (*Userauthorizat
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7136,16 +7042,15 @@ func (a UsersApi) PutUserRoutingskill(userId string, skillId string, body Userro
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7157,7 +7062,7 @@ func (a UsersApi) PutUserRoutingskill(userId string, skillId string, body Userro
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7226,16 +7131,15 @@ func (a UsersApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskil
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7247,7 +7151,7 @@ func (a UsersApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskil
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7316,16 +7220,15 @@ func (a UsersApi) PutUserRoutingstatus(userId string, body Routingstatus) (*Rout
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7337,7 +7240,7 @@ func (a UsersApi) PutUserRoutingstatus(userId string, body Routingstatus) (*Rout
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7406,16 +7309,15 @@ func (a UsersApi) PutUserState(userId string, body Userstate) (*Userstate, *APIR
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7427,7 +7329,7 @@ func (a UsersApi) PutUserState(userId string, body Userstate) (*Userstate, *APIR
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7496,16 +7398,15 @@ func (a UsersApi) PutUserStationAssociatedstationStationId(userId string, statio
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7517,7 +7418,7 @@ func (a UsersApi) PutUserStationAssociatedstationStationId(userId string, statio
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7577,16 +7478,15 @@ func (a UsersApi) PutUserStationDefaultstationStationId(userId string, stationId
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -7598,7 +7498,7 @@ func (a UsersApi) PutUserStationDefaultstationStationId(userId string, stationId
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -7624,4 +7524,3 @@ func (a UsersApi) PutUserStationDefaultstationStationId(userId string, stationId
 	}
 	return response, err
 }
-

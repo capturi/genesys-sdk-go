@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Auditlogmessage
-type Auditlogmessage struct { 
+type Auditlogmessage struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - Id of the audit message.
@@ -22,7 +23,7 @@ type Auditlogmessage struct {
 	User *Domainentityref `json:"user,omitempty"`
 
 	// Client - Client associated with this audit message.
-	Client *Addressableentityref `json:"client,omitempty"`
+	Client *Addressableentityref `json:"Client,omitempty"`
 
 	// RemoteIp - List of IP addresses of systems that originated or handled the request.
 	RemoteIp *[]string `json:"remoteIp,omitempty"`
@@ -99,9 +100,9 @@ func (o Auditlogmessage) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "EventDate", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"EventDate"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -110,7 +111,7 @@ func (o Auditlogmessage) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -129,95 +130,95 @@ func (o Auditlogmessage) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Auditlogmessage
-	
+
 	EventDate := new(string)
 	if o.EventDate != nil {
-		
+
 		*EventDate = timeutil.Strftime(o.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventDate = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		UserHomeOrgId *string `json:"userHomeOrgId,omitempty"`
-		
+
 		User *Domainentityref `json:"user,omitempty"`
-		
-		Client *Addressableentityref `json:"client,omitempty"`
-		
+
+		Client *Addressableentityref `json:"Client,omitempty"`
+
 		RemoteIp *[]string `json:"remoteIp,omitempty"`
-		
+
 		ServiceName *string `json:"serviceName,omitempty"`
-		
+
 		Level *string `json:"level,omitempty"`
-		
+
 		EventDate *string `json:"eventDate,omitempty"`
-		
+
 		Message *Messageinfo `json:"message,omitempty"`
-		
+
 		Action *string `json:"action,omitempty"`
-		
+
 		Entity *Domainentityref `json:"entity,omitempty"`
-		
+
 		EntityType *string `json:"entityType,omitempty"`
-		
+
 		Status *string `json:"status,omitempty"`
-		
+
 		Application *string `json:"application,omitempty"`
-		
+
 		InitiatingAction *Initiatingaction `json:"initiatingAction,omitempty"`
-		
+
 		TransactionInitiator *bool `json:"transactionInitiator,omitempty"`
-		
+
 		PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
-		
+
 		Context *map[string]string `json:"context,omitempty"`
-		
+
 		EntityChanges *[]Entitychange `json:"entityChanges,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		UserHomeOrgId: o.UserHomeOrgId,
-		
+
 		User: o.User,
-		
+
 		Client: o.Client,
-		
+
 		RemoteIp: o.RemoteIp,
-		
+
 		ServiceName: o.ServiceName,
-		
+
 		Level: o.Level,
-		
+
 		EventDate: EventDate,
-		
+
 		Message: o.Message,
-		
+
 		Action: o.Action,
-		
+
 		Entity: o.Entity,
-		
+
 		EntityType: o.EntityType,
-		
+
 		Status: o.Status,
-		
+
 		Application: o.Application,
-		
+
 		InitiatingAction: o.InitiatingAction,
-		
+
 		TransactionInitiator: o.TransactionInitiator,
-		
+
 		PropertyChanges: o.PropertyChanges,
-		
+
 		Context: o.Context,
-		
+
 		EntityChanges: o.EntityChanges,
-		Alias:    (Alias)(o),
+		Alias:         (Alias)(o),
 	})
 }
 
@@ -227,93 +228,92 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := AuditlogmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if UserHomeOrgId, ok := AuditlogmessageMap["userHomeOrgId"].(string); ok {
 		o.UserHomeOrgId = &UserHomeOrgId
 	}
-    
+
 	if User, ok := AuditlogmessageMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
-	
-	if Client, ok := AuditlogmessageMap["client"].(map[string]interface{}); ok {
+
+	if Client, ok := AuditlogmessageMap["Client"].(map[string]interface{}); ok {
 		ClientString, _ := json.Marshal(Client)
 		json.Unmarshal(ClientString, &o.Client)
 	}
-	
+
 	if RemoteIp, ok := AuditlogmessageMap["remoteIp"].([]interface{}); ok {
 		RemoteIpString, _ := json.Marshal(RemoteIp)
 		json.Unmarshal(RemoteIpString, &o.RemoteIp)
 	}
-	
+
 	if ServiceName, ok := AuditlogmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-    
+
 	if Level, ok := AuditlogmessageMap["level"].(string); ok {
 		o.Level = &Level
 	}
-    
+
 	if eventDateString, ok := AuditlogmessageMap["eventDate"].(string); ok {
 		EventDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventDateString)
 		o.EventDate = &EventDate
 	}
-	
+
 	if Message, ok := AuditlogmessageMap["message"].(map[string]interface{}); ok {
 		MessageString, _ := json.Marshal(Message)
 		json.Unmarshal(MessageString, &o.Message)
 	}
-	
+
 	if Action, ok := AuditlogmessageMap["action"].(string); ok {
 		o.Action = &Action
 	}
-    
+
 	if Entity, ok := AuditlogmessageMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)
 	}
-	
+
 	if EntityType, ok := AuditlogmessageMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-    
+
 	if Status, ok := AuditlogmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-    
+
 	if Application, ok := AuditlogmessageMap["application"].(string); ok {
 		o.Application = &Application
 	}
-    
+
 	if InitiatingAction, ok := AuditlogmessageMap["initiatingAction"].(map[string]interface{}); ok {
 		InitiatingActionString, _ := json.Marshal(InitiatingAction)
 		json.Unmarshal(InitiatingActionString, &o.InitiatingAction)
 	}
-	
+
 	if TransactionInitiator, ok := AuditlogmessageMap["transactionInitiator"].(bool); ok {
 		o.TransactionInitiator = &TransactionInitiator
 	}
-    
+
 	if PropertyChanges, ok := AuditlogmessageMap["propertyChanges"].([]interface{}); ok {
 		PropertyChangesString, _ := json.Marshal(PropertyChanges)
 		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)
 	}
-	
+
 	if Context, ok := AuditlogmessageMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
 	}
-	
+
 	if EntityChanges, ok := AuditlogmessageMap["entityChanges"].([]interface{}); ok {
 		EntityChangesString, _ := json.Marshal(EntityChanges)
 		json.Unmarshal(EntityChangesString, &o.EntityChanges)
 	}
-	
 
 	return nil
 }

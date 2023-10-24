@@ -1,23 +1,24 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Nuancebotcredentials - Model for a Nuance bot credentials
-type Nuancebotcredentials struct { 
+type Nuancebotcredentials struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// AppId - The application ID
 	AppId *string `json:"appId,omitempty"`
 
-	// ClientId - The credentials client ID
+	// ClientId - The credentials Client ID
 	ClientId *string `json:"clientId,omitempty"`
 
-	// ClientSecret - The credentials client secret
+	// ClientSecret - The credentials Client secret
 	ClientSecret *string `json:"clientSecret,omitempty"`
 
 	// ClientSecretProvided - True if the credentials secret is set (but not returned due to security reasons)
@@ -53,9 +54,9 @@ func (o Nuancebotcredentials) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -64,7 +65,7 @@ func (o Nuancebotcredentials) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -83,27 +84,27 @@ func (o Nuancebotcredentials) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Nuancebotcredentials
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		AppId *string `json:"appId,omitempty"`
-		
+
 		ClientId *string `json:"clientId,omitempty"`
-		
+
 		ClientSecret *string `json:"clientSecret,omitempty"`
-		
+
 		ClientSecretProvided *bool `json:"clientSecretProvided,omitempty"`
 		Alias
-	}{ 
+	}{
 		AppId: o.AppId,
-		
+
 		ClientId: o.ClientId,
-		
+
 		ClientSecret: o.ClientSecret,
-		
+
 		ClientSecretProvided: o.ClientSecretProvided,
-		Alias:    (Alias)(o),
+		Alias:                (Alias)(o),
 	})
 }
 
@@ -113,23 +114,22 @@ func (o *Nuancebotcredentials) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if AppId, ok := NuancebotcredentialsMap["appId"].(string); ok {
 		o.AppId = &AppId
 	}
-    
+
 	if ClientId, ok := NuancebotcredentialsMap["clientId"].(string); ok {
 		o.ClientId = &ClientId
 	}
-    
+
 	if ClientSecret, ok := NuancebotcredentialsMap["clientSecret"].(string); ok {
 		o.ClientSecret = &ClientSecret
 	}
-    
+
 	if ClientSecretProvided, ok := NuancebotcredentialsMap["clientSecretProvided"].(bool); ok {
 		o.ClientSecretProvided = &ClientSecretProvided
 	}
-    
 
 	return nil
 }

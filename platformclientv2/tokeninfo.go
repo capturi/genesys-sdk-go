@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Tokeninfo
-type Tokeninfo struct { 
+type Tokeninfo struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Organization - The current organization
@@ -17,7 +18,7 @@ type Tokeninfo struct {
 	// HomeOrganization - The token's home organization
 	HomeOrganization *Namedentity `json:"homeOrganization,omitempty"`
 
-	// AuthorizedScope - The list of scopes authorized for the OAuth client
+	// AuthorizedScope - The list of scopes authorized for the OAuth Client
 	AuthorizedScope *[]string `json:"authorizedScope,omitempty"`
 
 	// ClonedUser - Only present when a user is a clone of trustee user in the trustor org.
@@ -56,9 +57,9 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -67,7 +68,7 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -86,31 +87,31 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Tokeninfo
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Organization *Namedentity `json:"organization,omitempty"`
-		
+
 		HomeOrganization *Namedentity `json:"homeOrganization,omitempty"`
-		
+
 		AuthorizedScope *[]string `json:"authorizedScope,omitempty"`
-		
+
 		ClonedUser *Tokeninfocloneduser `json:"clonedUser,omitempty"`
-		
+
 		OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
 		Alias
-	}{ 
+	}{
 		Organization: o.Organization,
-		
+
 		HomeOrganization: o.HomeOrganization,
-		
+
 		AuthorizedScope: o.AuthorizedScope,
-		
+
 		ClonedUser: o.ClonedUser,
-		
+
 		OAuthClient: o.OAuthClient,
-		Alias:    (Alias)(o),
+		Alias:       (Alias)(o),
 	})
 }
 
@@ -120,32 +121,31 @@ func (o *Tokeninfo) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Organization, ok := TokeninfoMap["organization"].(map[string]interface{}); ok {
 		OrganizationString, _ := json.Marshal(Organization)
 		json.Unmarshal(OrganizationString, &o.Organization)
 	}
-	
+
 	if HomeOrganization, ok := TokeninfoMap["homeOrganization"].(map[string]interface{}); ok {
 		HomeOrganizationString, _ := json.Marshal(HomeOrganization)
 		json.Unmarshal(HomeOrganizationString, &o.HomeOrganization)
 	}
-	
+
 	if AuthorizedScope, ok := TokeninfoMap["authorizedScope"].([]interface{}); ok {
 		AuthorizedScopeString, _ := json.Marshal(AuthorizedScope)
 		json.Unmarshal(AuthorizedScopeString, &o.AuthorizedScope)
 	}
-	
+
 	if ClonedUser, ok := TokeninfoMap["clonedUser"].(map[string]interface{}); ok {
 		ClonedUserString, _ := json.Marshal(ClonedUser)
 		json.Unmarshal(ClonedUserString, &o.ClonedUser)
 	}
-	
+
 	if OAuthClient, ok := TokeninfoMap["OAuthClient"].(map[string]interface{}); ok {
 		OAuthClientString, _ := json.Marshal(OAuthClient)
 		json.Unmarshal(OAuthClientString, &o.OAuthClient)
 	}
-	
 
 	return nil
 }

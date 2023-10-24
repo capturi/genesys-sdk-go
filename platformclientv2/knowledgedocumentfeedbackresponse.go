@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Knowledgedocumentfeedbackresponse
-type Knowledgedocumentfeedbackresponse struct { 
+type Knowledgedocumentfeedbackresponse struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -45,7 +46,7 @@ type Knowledgedocumentfeedbackresponse struct {
 	// Document - The document on which feedback was given.
 	Document *Knowledgedocumentversionreference `json:"document,omitempty"`
 
-	// Application - The client application from which feedback was given.
+	// Application - The Client application from which feedback was given.
 	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 
 	// ConversationContext - Conversation context information if the feedback is given in the context of a conversation.
@@ -87,9 +88,9 @@ func (o Knowledgedocumentfeedbackresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"DateCreated"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -98,7 +99,7 @@ func (o Knowledgedocumentfeedbackresponse) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -117,79 +118,79 @@ func (o Knowledgedocumentfeedbackresponse) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Knowledgedocumentfeedbackresponse
-	
+
 	DateCreated := new(string)
 	if o.DateCreated != nil {
-		
+
 		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		DocumentVariation *Entityreference `json:"documentVariation,omitempty"`
-		
+
 		Rating *string `json:"rating,omitempty"`
-		
+
 		Reason *string `json:"reason,omitempty"`
-		
+
 		Comment *string `json:"comment,omitempty"`
-		
+
 		Search *Entityreference `json:"search,omitempty"`
-		
+
 		SessionId *string `json:"sessionId,omitempty"`
-		
+
 		DateCreated *string `json:"dateCreated,omitempty"`
-		
+
 		QueryType *string `json:"queryType,omitempty"`
-		
+
 		State *string `json:"state,omitempty"`
-		
+
 		Document *Knowledgedocumentversionreference `json:"document,omitempty"`
-		
+
 		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
-		
+
 		ConversationContext *Knowledgeconversationcontextresponse `json:"conversationContext,omitempty"`
-		
+
 		User *Addressableentityref `json:"user,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		DocumentVariation: o.DocumentVariation,
-		
+
 		Rating: o.Rating,
-		
+
 		Reason: o.Reason,
-		
+
 		Comment: o.Comment,
-		
+
 		Search: o.Search,
-		
+
 		SessionId: o.SessionId,
-		
+
 		DateCreated: DateCreated,
-		
+
 		QueryType: o.QueryType,
-		
+
 		State: o.State,
-		
+
 		Document: o.Document,
-		
+
 		Application: o.Application,
-		
+
 		ConversationContext: o.ConversationContext,
-		
+
 		User: o.User,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -199,74 +200,73 @@ func (o *Knowledgedocumentfeedbackresponse) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := KnowledgedocumentfeedbackresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if DocumentVariation, ok := KnowledgedocumentfeedbackresponseMap["documentVariation"].(map[string]interface{}); ok {
 		DocumentVariationString, _ := json.Marshal(DocumentVariation)
 		json.Unmarshal(DocumentVariationString, &o.DocumentVariation)
 	}
-	
+
 	if Rating, ok := KnowledgedocumentfeedbackresponseMap["rating"].(string); ok {
 		o.Rating = &Rating
 	}
-    
+
 	if Reason, ok := KnowledgedocumentfeedbackresponseMap["reason"].(string); ok {
 		o.Reason = &Reason
 	}
-    
+
 	if Comment, ok := KnowledgedocumentfeedbackresponseMap["comment"].(string); ok {
 		o.Comment = &Comment
 	}
-    
+
 	if Search, ok := KnowledgedocumentfeedbackresponseMap["search"].(map[string]interface{}); ok {
 		SearchString, _ := json.Marshal(Search)
 		json.Unmarshal(SearchString, &o.Search)
 	}
-	
+
 	if SessionId, ok := KnowledgedocumentfeedbackresponseMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-    
+
 	if dateCreatedString, ok := KnowledgedocumentfeedbackresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
-	
+
 	if QueryType, ok := KnowledgedocumentfeedbackresponseMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
 	}
-    
+
 	if State, ok := KnowledgedocumentfeedbackresponseMap["state"].(string); ok {
 		o.State = &State
 	}
-    
+
 	if Document, ok := KnowledgedocumentfeedbackresponseMap["document"].(map[string]interface{}); ok {
 		DocumentString, _ := json.Marshal(Document)
 		json.Unmarshal(DocumentString, &o.Document)
 	}
-	
+
 	if Application, ok := KnowledgedocumentfeedbackresponseMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
 	}
-	
+
 	if ConversationContext, ok := KnowledgedocumentfeedbackresponseMap["conversationContext"].(map[string]interface{}); ok {
 		ConversationContextString, _ := json.Marshal(ConversationContext)
 		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
-	
+
 	if User, ok := KnowledgedocumentfeedbackresponseMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
-	
+
 	if SelfUri, ok := KnowledgedocumentfeedbackresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Apiusagesimplesearch
-type Apiusagesimplesearch struct { 
+type Apiusagesimplesearch struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Interval - Behaves like one clause in a SQL WHERE. Specifies the date and time range of data being queried. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
@@ -17,7 +18,7 @@ type Apiusagesimplesearch struct {
 	// Metrics - Behaves like a SQL SELECT clause. Enables retrieving only named metrics. If omitted, all metrics that are available will be returned (like SELECT *).
 	Metrics *[]string `json:"metrics,omitempty"`
 
-	// OauthClientNames - Behaves like a SQL WHERE with multiple IN operators. Specifies a list of OAuth client names to be queried.
+	// OauthClientNames - Behaves like a SQL WHERE with multiple IN operators. Specifies a list of OAuth Client names to be queried.
 	OauthClientNames *[]string `json:"oauthClientNames,omitempty"`
 
 	// HttpMethods - Behaves like a SQL WHERE with multiple IN operators. Specifies a list of HTTP methods to be queried.
@@ -56,9 +57,9 @@ func (o Apiusagesimplesearch) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -67,7 +68,7 @@ func (o Apiusagesimplesearch) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -86,31 +87,31 @@ func (o Apiusagesimplesearch) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Apiusagesimplesearch
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Interval *string `json:"interval,omitempty"`
-		
+
 		Metrics *[]string `json:"metrics,omitempty"`
-		
+
 		OauthClientNames *[]string `json:"oauthClientNames,omitempty"`
-		
+
 		HttpMethods *[]string `json:"httpMethods,omitempty"`
-		
+
 		TemplateUris *[]string `json:"templateUris,omitempty"`
 		Alias
-	}{ 
+	}{
 		Interval: o.Interval,
-		
+
 		Metrics: o.Metrics,
-		
+
 		OauthClientNames: o.OauthClientNames,
-		
+
 		HttpMethods: o.HttpMethods,
-		
+
 		TemplateUris: o.TemplateUris,
-		Alias:    (Alias)(o),
+		Alias:        (Alias)(o),
 	})
 }
 
@@ -120,31 +121,30 @@ func (o *Apiusagesimplesearch) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Interval, ok := ApiusagesimplesearchMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-    
+
 	if Metrics, ok := ApiusagesimplesearchMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)
 	}
-	
+
 	if OauthClientNames, ok := ApiusagesimplesearchMap["oauthClientNames"].([]interface{}); ok {
 		OauthClientNamesString, _ := json.Marshal(OauthClientNames)
 		json.Unmarshal(OauthClientNamesString, &o.OauthClientNames)
 	}
-	
+
 	if HttpMethods, ok := ApiusagesimplesearchMap["httpMethods"].([]interface{}); ok {
 		HttpMethodsString, _ := json.Marshal(HttpMethods)
 		json.Unmarshal(HttpMethodsString, &o.HttpMethods)
 	}
-	
+
 	if TemplateUris, ok := ApiusagesimplesearchMap["templateUris"].([]interface{}); ok {
 		TemplateUrisString, _ := json.Marshal(TemplateUris)
 		json.Unmarshal(TemplateUrisString, &o.TemplateUris)
 	}
-	
 
 	return nil
 }

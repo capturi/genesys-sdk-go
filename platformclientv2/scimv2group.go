@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Scimv2group - Defines a SCIM group.
-type Scimv2group struct { 
+type Scimv2group struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The ID of the SCIM resource. Set by the service provider. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readOnly\". \"returned\" is set to \"always\".
@@ -20,7 +21,7 @@ type Scimv2group struct {
 	// DisplayName - The display name of the group.
 	DisplayName *string `json:"displayName,omitempty"`
 
-	// ExternalId - The external ID of the group. Set by the provisioning client. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readWrite\".
+	// ExternalId - The external ID of the group. Set by the provisioning Client. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readWrite\".
 	ExternalId *string `json:"externalId,omitempty"`
 
 	// Members - The list of members in the group.
@@ -59,9 +60,9 @@ func (o Scimv2group) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -70,7 +71,7 @@ func (o Scimv2group) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -89,35 +90,35 @@ func (o Scimv2group) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Scimv2group
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Schemas *[]string `json:"schemas,omitempty"`
-		
+
 		DisplayName *string `json:"displayName,omitempty"`
-		
+
 		ExternalId *string `json:"externalId,omitempty"`
-		
+
 		Members *[]Scimv2memberreference `json:"members,omitempty"`
-		
+
 		Meta *Scimmetadata `json:"meta,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Schemas: o.Schemas,
-		
+
 		DisplayName: o.DisplayName,
-		
+
 		ExternalId: o.ExternalId,
-		
+
 		Members: o.Members,
-		
-		Meta: o.Meta,
-		Alias:    (Alias)(o),
+
+		Meta:  o.Meta,
+		Alias: (Alias)(o),
 	})
 }
 
@@ -127,34 +128,33 @@ func (o *Scimv2group) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := Scimv2groupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Schemas, ok := Scimv2groupMap["schemas"].([]interface{}); ok {
 		SchemasString, _ := json.Marshal(Schemas)
 		json.Unmarshal(SchemasString, &o.Schemas)
 	}
-	
+
 	if DisplayName, ok := Scimv2groupMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-    
+
 	if ExternalId, ok := Scimv2groupMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
 	}
-    
+
 	if Members, ok := Scimv2groupMap["members"].([]interface{}); ok {
 		MembersString, _ := json.Marshal(Members)
 		json.Unmarshal(MembersString, &o.Members)
 	}
-	
+
 	if Meta, ok := Scimv2groupMap["meta"].(map[string]interface{}); ok {
 		MetaString, _ := json.Marshal(Meta)
 		json.Unmarshal(MetaString, &o.Meta)
 	}
-	
 
 	return nil
 }

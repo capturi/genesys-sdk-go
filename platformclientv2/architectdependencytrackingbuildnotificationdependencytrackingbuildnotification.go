@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification
-type Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification struct { 
+type Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Status - The organization's new dependency tracking build status
@@ -19,7 +20,7 @@ type Architectdependencytrackingbuildnotificationdependencytrackingbuildnotifica
 	User *Architectdependencytrackingbuildnotificationuser `json:"user,omitempty"`
 
 	// Client
-	Client *Architectdependencytrackingbuildnotificationclient `json:"client,omitempty"`
+	Client *Architectdependencytrackingbuildnotificationclient `json:"Client,omitempty"`
 
 	// StartTime - The time the last build started, in ISO 8601 format
 	StartTime *time.Time `json:"startTime,omitempty"`
@@ -54,9 +55,9 @@ func (o Architectdependencytrackingbuildnotificationdependencytrackingbuildnotif
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"StartTime"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -65,7 +66,7 @@ func (o Architectdependencytrackingbuildnotificationdependencytrackingbuildnotif
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -84,35 +85,35 @@ func (o Architectdependencytrackingbuildnotificationdependencytrackingbuildnotif
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification
-	
+
 	StartTime := new(string)
 	if o.StartTime != nil {
-		
+
 		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Status *string `json:"status,omitempty"`
-		
+
 		User *Architectdependencytrackingbuildnotificationuser `json:"user,omitempty"`
-		
-		Client *Architectdependencytrackingbuildnotificationclient `json:"client,omitempty"`
-		
+
+		Client *Architectdependencytrackingbuildnotificationclient `json:"Client,omitempty"`
+
 		StartTime *string `json:"startTime,omitempty"`
 		Alias
-	}{ 
+	}{
 		Status: o.Status,
-		
+
 		User: o.User,
-		
+
 		Client: o.Client,
-		
+
 		StartTime: StartTime,
-		Alias:    (Alias)(o),
+		Alias:     (Alias)(o),
 	})
 }
 
@@ -122,26 +123,25 @@ func (o *Architectdependencytrackingbuildnotificationdependencytrackingbuildnoti
 	if err != nil {
 		return err
 	}
-	
+
 	if Status, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-    
+
 	if User, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
-	
-	if Client, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["client"].(map[string]interface{}); ok {
+
+	if Client, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["Client"].(map[string]interface{}); ok {
 		ClientString, _ := json.Marshal(Client)
 		json.Unmarshal(ClientString, &o.Client)
 	}
-	
+
 	if startTimeString, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
 	}
-	
 
 	return nil
 }

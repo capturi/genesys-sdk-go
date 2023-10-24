@@ -45,11 +45,11 @@ func testRetryErrorCode(t *testing.T, errorCode int) {
 	responseHook := func(logger retryablehttp.Logger, res *http.Response) {}
 
 	APIClient := NewAPIClient(&Configuration{})
-	APIClient.client.RetryWaitMin = 10 * time.Millisecond
-	APIClient.client.RetryWaitMax = 50 * time.Millisecond
-	APIClient.client.RetryMax = 50
-	APIClient.client.RequestLogHook = hook
-	APIClient.client.ResponseLogHook = responseHook
+	APIClient.Client.RetryWaitMin = 10 * time.Millisecond
+	APIClient.Client.RetryWaitMax = 50 * time.Millisecond
+	APIClient.Client.RetryMax = 50
+	APIClient.Client.RequestLogHook = hook
+	APIClient.Client.ResponseLogHook = responseHook
 
 	// Create a request
 	testBytes := []byte("hello")
@@ -63,7 +63,7 @@ func testRetryErrorCode(t *testing.T, errorCode int) {
 	go func() {
 		defer close(doneCh)
 		var err error
-		resp, err = APIClient.client.Do(req)
+		resp, err = APIClient.Client.Do(req)
 		if err != nil {
 			t.Fatalf("err: %v", err)
 		}
@@ -129,10 +129,10 @@ func testDoNotRetryErrorCode(t *testing.T, errorCode int) {
 	responseHook := func(logger retryablehttp.Logger, res *http.Response) {}
 
 	APIClient := NewAPIClient(&Configuration{})
-	APIClient.client.RetryWaitMax = 0
-	APIClient.client.RetryMax = 0
-	APIClient.client.RequestLogHook = hook
-	APIClient.client.ResponseLogHook = responseHook
+	APIClient.Client.RetryWaitMax = 0
+	APIClient.Client.RetryMax = 0
+	APIClient.Client.RequestLogHook = hook
+	APIClient.Client.ResponseLogHook = responseHook
 
 	// Create a request
 	testBytes := []byte("hello")
@@ -142,7 +142,7 @@ func testDoNotRetryErrorCode(t *testing.T, errorCode int) {
 	go func() {
 		defer close(doneCh)
 		var err error
-		_, err = APIClient.client.Do(req)
+		_, err = APIClient.Client.Do(req)
 		if err == nil {
 			t.Fatalf("expected error response")
 		}

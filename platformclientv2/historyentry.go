@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Historyentry
-type Historyentry struct { 
+type Historyentry struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Action - The action performed
@@ -24,8 +25,8 @@ type Historyentry struct {
 	// User - User associated with this entry.
 	User *User `json:"user,omitempty"`
 
-	// Client - OAuth client associated with this entry.
-	Client *Domainentityref `json:"client,omitempty"`
+	// Client - OAuth Client associated with this entry.
+	Client *Domainentityref `json:"Client,omitempty"`
 
 	// Version
 	Version *string `json:"version,omitempty"`
@@ -63,9 +64,9 @@ func (o Historyentry) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "Timestamp", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"Timestamp"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -74,7 +75,7 @@ func (o Historyentry) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -93,47 +94,47 @@ func (o Historyentry) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Historyentry
-	
+
 	Timestamp := new(string)
 	if o.Timestamp != nil {
-		
+
 		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Action *string `json:"action,omitempty"`
-		
+
 		Resource *string `json:"resource,omitempty"`
-		
+
 		Timestamp *string `json:"timestamp,omitempty"`
-		
+
 		User *User `json:"user,omitempty"`
-		
-		Client *Domainentityref `json:"client,omitempty"`
-		
+
+		Client *Domainentityref `json:"Client,omitempty"`
+
 		Version *string `json:"version,omitempty"`
-		
+
 		Secure *bool `json:"secure,omitempty"`
 		Alias
-	}{ 
+	}{
 		Action: o.Action,
-		
+
 		Resource: o.Resource,
-		
+
 		Timestamp: Timestamp,
-		
+
 		User: o.User,
-		
+
 		Client: o.Client,
-		
+
 		Version: o.Version,
-		
+
 		Secure: o.Secure,
-		Alias:    (Alias)(o),
+		Alias:  (Alias)(o),
 	})
 }
 
@@ -143,38 +144,37 @@ func (o *Historyentry) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Action, ok := HistoryentryMap["action"].(string); ok {
 		o.Action = &Action
 	}
-    
+
 	if Resource, ok := HistoryentryMap["resource"].(string); ok {
 		o.Resource = &Resource
 	}
-    
+
 	if timestampString, ok := HistoryentryMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
 	}
-	
+
 	if User, ok := HistoryentryMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
-	
-	if Client, ok := HistoryentryMap["client"].(map[string]interface{}); ok {
+
+	if Client, ok := HistoryentryMap["Client"].(map[string]interface{}); ok {
 		ClientString, _ := json.Marshal(Client)
 		json.Unmarshal(ClientString, &o.Client)
 	}
-	
+
 	if Version, ok := HistoryentryMap["version"].(string); ok {
 		o.Version = &Version
 	}
-    
+
 	if Secure, ok := HistoryentryMap["secure"].(bool); ok {
 		o.Secure = &Secure
 	}
-    
 
 	return nil
 }

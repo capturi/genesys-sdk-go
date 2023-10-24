@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Widgetdeployment
-type Widgetdeployment struct { 
+type Widgetdeployment struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -35,7 +36,7 @@ type Widgetdeployment struct {
 	// ClientType - The type of display widget for which this Deployment is configured, which controls the administrator settings shown.
 	ClientType *string `json:"clientType,omitempty"`
 
-	// ClientConfig - The client configuration options that should be made available to the clients of this Deployment.
+	// ClientConfig - The Client configuration options that should be made available to the clients of this Deployment.
 	ClientConfig *Widgetclientconfig `json:"clientConfig,omitempty"`
 
 	// SelfUri - The URI for this object
@@ -71,9 +72,9 @@ func (o Widgetdeployment) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -82,7 +83,7 @@ func (o Widgetdeployment) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -101,51 +102,51 @@ func (o Widgetdeployment) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Widgetdeployment
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		Description *string `json:"description,omitempty"`
-		
+
 		AuthenticationRequired *bool `json:"authenticationRequired,omitempty"`
-		
+
 		Disabled *bool `json:"disabled,omitempty"`
-		
+
 		Flow *Domainentityref `json:"flow,omitempty"`
-		
+
 		AllowedDomains *[]string `json:"allowedDomains,omitempty"`
-		
+
 		ClientType *string `json:"clientType,omitempty"`
-		
+
 		ClientConfig *Widgetclientconfig `json:"clientConfig,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		Description: o.Description,
-		
+
 		AuthenticationRequired: o.AuthenticationRequired,
-		
+
 		Disabled: o.Disabled,
-		
+
 		Flow: o.Flow,
-		
+
 		AllowedDomains: o.AllowedDomains,
-		
+
 		ClientType: o.ClientType,
-		
+
 		ClientConfig: o.ClientConfig,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -155,50 +156,49 @@ func (o *Widgetdeployment) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := WidgetdeploymentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := WidgetdeploymentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if Description, ok := WidgetdeploymentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-    
+
 	if AuthenticationRequired, ok := WidgetdeploymentMap["authenticationRequired"].(bool); ok {
 		o.AuthenticationRequired = &AuthenticationRequired
 	}
-    
+
 	if Disabled, ok := WidgetdeploymentMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-    
+
 	if Flow, ok := WidgetdeploymentMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
 	}
-	
+
 	if AllowedDomains, ok := WidgetdeploymentMap["allowedDomains"].([]interface{}); ok {
 		AllowedDomainsString, _ := json.Marshal(AllowedDomains)
 		json.Unmarshal(AllowedDomainsString, &o.AllowedDomains)
 	}
-	
+
 	if ClientType, ok := WidgetdeploymentMap["clientType"].(string); ok {
 		o.ClientType = &ClientType
 	}
-    
+
 	if ClientConfig, ok := WidgetdeploymentMap["clientConfig"].(map[string]interface{}); ok {
 		ClientConfigString, _ := json.Marshal(ClientConfig)
 		json.Unmarshal(ClientConfigString, &o.ClientConfig)
 	}
-	
+
 	if SelfUri, ok := WidgetdeploymentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

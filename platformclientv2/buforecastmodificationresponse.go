@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Buforecastmodificationresponse
-type Buforecastmodificationresponse struct { 
+type Buforecastmodificationresponse struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// VarType - The type of the modification
@@ -32,7 +33,7 @@ type Buforecastmodificationresponse struct {
 	// Values - The list of modification values. Only applicable for grid-type modifications
 	Values *[]Wfmforecastmodificationintervaloffsetvalue `json:"values,omitempty"`
 
-	// DisplayGranularity - The client side display granularity of the modification, expressed in the ISO-8601 duration format. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
+	// DisplayGranularity - The Client side display granularity of the modification, expressed in the ISO-8601 duration format. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
 	DisplayGranularity *string `json:"displayGranularity,omitempty"`
 
 	// Granularity - The actual granularity of the modification as stored behind the scenes, expressed in the ISO-8601 duration format. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
@@ -74,9 +75,9 @@ func (o Buforecastmodificationresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -85,7 +86,7 @@ func (o Buforecastmodificationresponse) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -104,55 +105,55 @@ func (o Buforecastmodificationresponse) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Buforecastmodificationresponse
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		VarType *string `json:"type,omitempty"`
-		
+
 		StartIntervalIndex *int `json:"startIntervalIndex,omitempty"`
-		
+
 		EndIntervalIndex *int `json:"endIntervalIndex,omitempty"`
-		
+
 		Metric *string `json:"metric,omitempty"`
-		
+
 		LegacyMetric *string `json:"legacyMetric,omitempty"`
-		
+
 		Value *float64 `json:"value,omitempty"`
-		
+
 		Values *[]Wfmforecastmodificationintervaloffsetvalue `json:"values,omitempty"`
-		
+
 		DisplayGranularity *string `json:"displayGranularity,omitempty"`
-		
+
 		Granularity *string `json:"granularity,omitempty"`
-		
+
 		Enabled *bool `json:"enabled,omitempty"`
-		
+
 		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 		Alias
-	}{ 
+	}{
 		VarType: o.VarType,
-		
+
 		StartIntervalIndex: o.StartIntervalIndex,
-		
+
 		EndIntervalIndex: o.EndIntervalIndex,
-		
+
 		Metric: o.Metric,
-		
+
 		LegacyMetric: o.LegacyMetric,
-		
+
 		Value: o.Value,
-		
+
 		Values: o.Values,
-		
+
 		DisplayGranularity: o.DisplayGranularity,
-		
+
 		Granularity: o.Granularity,
-		
+
 		Enabled: o.Enabled,
-		
+
 		PlanningGroupIds: o.PlanningGroupIds,
-		Alias:    (Alias)(o),
+		Alias:            (Alias)(o),
 	})
 }
 
@@ -162,55 +163,54 @@ func (o *Buforecastmodificationresponse) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if VarType, ok := BuforecastmodificationresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-    
+
 	if StartIntervalIndex, ok := BuforecastmodificationresponseMap["startIntervalIndex"].(float64); ok {
 		StartIntervalIndexInt := int(StartIntervalIndex)
 		o.StartIntervalIndex = &StartIntervalIndexInt
 	}
-	
+
 	if EndIntervalIndex, ok := BuforecastmodificationresponseMap["endIntervalIndex"].(float64); ok {
 		EndIntervalIndexInt := int(EndIntervalIndex)
 		o.EndIntervalIndex = &EndIntervalIndexInt
 	}
-	
+
 	if Metric, ok := BuforecastmodificationresponseMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-    
+
 	if LegacyMetric, ok := BuforecastmodificationresponseMap["legacyMetric"].(string); ok {
 		o.LegacyMetric = &LegacyMetric
 	}
-    
+
 	if Value, ok := BuforecastmodificationresponseMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-    
+
 	if Values, ok := BuforecastmodificationresponseMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
 	}
-	
+
 	if DisplayGranularity, ok := BuforecastmodificationresponseMap["displayGranularity"].(string); ok {
 		o.DisplayGranularity = &DisplayGranularity
 	}
-    
+
 	if Granularity, ok := BuforecastmodificationresponseMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-    
+
 	if Enabled, ok := BuforecastmodificationresponseMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-    
+
 	if PlanningGroupIds, ok := BuforecastmodificationresponseMap["planningGroupIds"].([]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
 	}
-	
 
 	return nil
 }

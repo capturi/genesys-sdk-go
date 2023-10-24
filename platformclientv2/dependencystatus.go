@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Dependencystatus
-type Dependencystatus struct { 
+type Dependencystatus struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -21,8 +22,8 @@ type Dependencystatus struct {
 	// User - User that initiated the build.
 	User *User `json:"user,omitempty"`
 
-	// Client - OAuth client that initiated the build.
-	Client *Domainentityref `json:"client,omitempty"`
+	// Client - OAuth Client that initiated the build.
+	Client *Domainentityref `json:"Client,omitempty"`
 
 	// BuildId
 	BuildId *string `json:"buildId,omitempty"`
@@ -72,9 +73,9 @@ func (o Dependencystatus) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateStarted","DateCompleted", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"DateStarted", "DateCompleted"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -83,7 +84,7 @@ func (o Dependencystatus) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -102,67 +103,67 @@ func (o Dependencystatus) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Dependencystatus
-	
+
 	DateStarted := new(string)
 	if o.DateStarted != nil {
-		
+
 		*DateStarted = timeutil.Strftime(o.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStarted = nil
 	}
-	
+
 	DateCompleted := new(string)
 	if o.DateCompleted != nil {
-		
+
 		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		User *User `json:"user,omitempty"`
-		
-		Client *Domainentityref `json:"client,omitempty"`
-		
+
+		Client *Domainentityref `json:"Client,omitempty"`
+
 		BuildId *string `json:"buildId,omitempty"`
-		
+
 		DateStarted *string `json:"dateStarted,omitempty"`
-		
+
 		DateCompleted *string `json:"dateCompleted,omitempty"`
-		
+
 		Status *string `json:"status,omitempty"`
-		
+
 		FailedObjects *[]Failedobject `json:"failedObjects,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		User: o.User,
-		
+
 		Client: o.Client,
-		
+
 		BuildId: o.BuildId,
-		
+
 		DateStarted: DateStarted,
-		
+
 		DateCompleted: DateCompleted,
-		
+
 		Status: o.Status,
-		
+
 		FailedObjects: o.FailedObjects,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -172,52 +173,51 @@ func (o *Dependencystatus) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := DependencystatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := DependencystatusMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if User, ok := DependencystatusMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
-	
-	if Client, ok := DependencystatusMap["client"].(map[string]interface{}); ok {
+
+	if Client, ok := DependencystatusMap["Client"].(map[string]interface{}); ok {
 		ClientString, _ := json.Marshal(Client)
 		json.Unmarshal(ClientString, &o.Client)
 	}
-	
+
 	if BuildId, ok := DependencystatusMap["buildId"].(string); ok {
 		o.BuildId = &BuildId
 	}
-    
+
 	if dateStartedString, ok := DependencystatusMap["dateStarted"].(string); ok {
 		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
 		o.DateStarted = &DateStarted
 	}
-	
+
 	if dateCompletedString, ok := DependencystatusMap["dateCompleted"].(string); ok {
 		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
 		o.DateCompleted = &DateCompleted
 	}
-	
+
 	if Status, ok := DependencystatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-    
+
 	if FailedObjects, ok := DependencystatusMap["failedObjects"].([]interface{}); ok {
 		FailedObjectsString, _ := json.Marshal(FailedObjects)
 		json.Unmarshal(FailedObjectsString, &o.FailedObjects)
 	}
-	
+
 	if SelfUri, ok := DependencystatusMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Nuancebot - Model for a Nuance bot
-type Nuancebot struct { 
+type Nuancebot struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - Nuance bot Id
@@ -32,7 +33,7 @@ type Nuancebot struct {
 	// Geography - The Geography of the Nuance bot
 	Geography *Nuancegeography `json:"geography,omitempty"`
 
-	// Credentials - client ID/Secret objects for the credentials that execute this Nuance bot
+	// Credentials - Client ID/Secret objects for the credentials that execute this Nuance bot
 	Credentials *[]Nuancebotcredentials `json:"credentials,omitempty"`
 
 	// Variables - List of available variables in this Nuance bot.  When querying, use the 'expand=variables' query param to populate this value
@@ -80,9 +81,9 @@ func (o Nuancebot) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -91,7 +92,7 @@ func (o Nuancebot) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -110,63 +111,63 @@ func (o Nuancebot) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Nuancebot
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		IntegrationId *string `json:"integrationId,omitempty"`
-		
+
 		NuanceOrganization *Nuanceorganization `json:"nuanceOrganization,omitempty"`
-		
+
 		Application *Nuanceapplication `json:"application,omitempty"`
-		
+
 		NuanceEnvironment *Nuanceenvironment `json:"nuanceEnvironment,omitempty"`
-		
+
 		Geography *Nuancegeography `json:"geography,omitempty"`
-		
+
 		Credentials *[]Nuancebotcredentials `json:"credentials,omitempty"`
-		
+
 		Variables *[]Nuancebotvariable `json:"variables,omitempty"`
-		
+
 		TransferNodes *[]Nuancebottransfernode `json:"transferNodes,omitempty"`
-		
+
 		Locales *[]string `json:"locales,omitempty"`
-		
+
 		Channels *[]Nuancechannel `json:"channels,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		IntegrationId: o.IntegrationId,
-		
+
 		NuanceOrganization: o.NuanceOrganization,
-		
+
 		Application: o.Application,
-		
+
 		NuanceEnvironment: o.NuanceEnvironment,
-		
+
 		Geography: o.Geography,
-		
+
 		Credentials: o.Credentials,
-		
+
 		Variables: o.Variables,
-		
+
 		TransferNodes: o.TransferNodes,
-		
+
 		Locales: o.Locales,
-		
+
 		Channels: o.Channels,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -176,68 +177,67 @@ func (o *Nuancebot) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := NuancebotMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := NuancebotMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if IntegrationId, ok := NuancebotMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-    
+
 	if NuanceOrganization, ok := NuancebotMap["nuanceOrganization"].(map[string]interface{}); ok {
 		NuanceOrganizationString, _ := json.Marshal(NuanceOrganization)
 		json.Unmarshal(NuanceOrganizationString, &o.NuanceOrganization)
 	}
-	
+
 	if Application, ok := NuancebotMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
 	}
-	
+
 	if NuanceEnvironment, ok := NuancebotMap["nuanceEnvironment"].(map[string]interface{}); ok {
 		NuanceEnvironmentString, _ := json.Marshal(NuanceEnvironment)
 		json.Unmarshal(NuanceEnvironmentString, &o.NuanceEnvironment)
 	}
-	
+
 	if Geography, ok := NuancebotMap["geography"].(map[string]interface{}); ok {
 		GeographyString, _ := json.Marshal(Geography)
 		json.Unmarshal(GeographyString, &o.Geography)
 	}
-	
+
 	if Credentials, ok := NuancebotMap["credentials"].([]interface{}); ok {
 		CredentialsString, _ := json.Marshal(Credentials)
 		json.Unmarshal(CredentialsString, &o.Credentials)
 	}
-	
+
 	if Variables, ok := NuancebotMap["variables"].([]interface{}); ok {
 		VariablesString, _ := json.Marshal(Variables)
 		json.Unmarshal(VariablesString, &o.Variables)
 	}
-	
+
 	if TransferNodes, ok := NuancebotMap["transferNodes"].([]interface{}); ok {
 		TransferNodesString, _ := json.Marshal(TransferNodes)
 		json.Unmarshal(TransferNodesString, &o.TransferNodes)
 	}
-	
+
 	if Locales, ok := NuancebotMap["locales"].([]interface{}); ok {
 		LocalesString, _ := json.Marshal(Locales)
 		json.Unmarshal(LocalesString, &o.Locales)
 	}
-	
+
 	if Channels, ok := NuancebotMap["channels"].([]interface{}); ok {
 		ChannelsString, _ := json.Marshal(Channels)
 		json.Unmarshal(ChannelsString, &o.Channels)
 	}
-	
+
 	if SelfUri, ok := NuancebotMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

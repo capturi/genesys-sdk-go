@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Knowledgedocumentview
-type Knowledgedocumentview struct { 
+type Knowledgedocumentview struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// DocumentVariationId - The variation of the viewed document.
@@ -23,7 +24,7 @@ type Knowledgedocumentview struct {
 	// QueryType - The type of the query that surfaced the document.
 	QueryType *string `json:"queryType,omitempty"`
 
-	// Application - The client application from which the document was viewed.
+	// Application - The Client application from which the document was viewed.
 	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 
 	// SessionId - The unique identifier of the knowledge session in which the document was viewed.
@@ -62,9 +63,9 @@ func (o Knowledgedocumentview) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -73,7 +74,7 @@ func (o Knowledgedocumentview) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -92,39 +93,39 @@ func (o Knowledgedocumentview) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Knowledgedocumentview
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		DocumentVariationId *string `json:"documentVariationId,omitempty"`
-		
+
 		DocumentVersionId *string `json:"documentVersionId,omitempty"`
-		
+
 		SearchId *string `json:"searchId,omitempty"`
-		
+
 		QueryType *string `json:"queryType,omitempty"`
-		
+
 		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
-		
+
 		SessionId *string `json:"sessionId,omitempty"`
-		
+
 		ConversationContext *Knowledgeconversationcontext `json:"conversationContext,omitempty"`
 		Alias
-	}{ 
+	}{
 		DocumentVariationId: o.DocumentVariationId,
-		
+
 		DocumentVersionId: o.DocumentVersionId,
-		
+
 		SearchId: o.SearchId,
-		
+
 		QueryType: o.QueryType,
-		
+
 		Application: o.Application,
-		
+
 		SessionId: o.SessionId,
-		
+
 		ConversationContext: o.ConversationContext,
-		Alias:    (Alias)(o),
+		Alias:               (Alias)(o),
 	})
 }
 
@@ -134,37 +135,36 @@ func (o *Knowledgedocumentview) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if DocumentVariationId, ok := KnowledgedocumentviewMap["documentVariationId"].(string); ok {
 		o.DocumentVariationId = &DocumentVariationId
 	}
-    
+
 	if DocumentVersionId, ok := KnowledgedocumentviewMap["documentVersionId"].(string); ok {
 		o.DocumentVersionId = &DocumentVersionId
 	}
-    
+
 	if SearchId, ok := KnowledgedocumentviewMap["searchId"].(string); ok {
 		o.SearchId = &SearchId
 	}
-    
+
 	if QueryType, ok := KnowledgedocumentviewMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
 	}
-    
+
 	if Application, ok := KnowledgedocumentviewMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
 	}
-	
+
 	if SessionId, ok := KnowledgedocumentviewMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-    
+
 	if ConversationContext, ok := KnowledgedocumentviewMap["conversationContext"].(map[string]interface{}); ok {
 		ConversationContextString, _ := json.Marshal(ConversationContext)
 		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
-	
 
 	return nil
 }

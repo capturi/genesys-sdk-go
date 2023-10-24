@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Qualityauditlogmessage
-type Qualityauditlogmessage struct { 
+type Qualityauditlogmessage struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - Id of the audit message.
@@ -25,7 +26,7 @@ type Qualityauditlogmessage struct {
 	User *Domainentityref `json:"user,omitempty"`
 
 	// Client - Client associated with this audit message.
-	Client *Addressableentityref `json:"client,omitempty"`
+	Client *Addressableentityref `json:"Client,omitempty"`
 
 	// RemoteIps - List of IP addresses of systems that originated or handled the request.
 	RemoteIps *[]string `json:"remoteIps,omitempty"`
@@ -90,9 +91,9 @@ func (o Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "EventDate", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"EventDate"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -101,7 +102,7 @@ func (o Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -120,83 +121,83 @@ func (o Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Qualityauditlogmessage
-	
+
 	EventDate := new(string)
 	if o.EventDate != nil {
-		
+
 		*EventDate = timeutil.Strftime(o.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventDate = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		UserHomeOrgId *string `json:"userHomeOrgId,omitempty"`
-		
+
 		UserTrusteeOrgId *string `json:"userTrusteeOrgId,omitempty"`
-		
+
 		User *Domainentityref `json:"user,omitempty"`
-		
-		Client *Addressableentityref `json:"client,omitempty"`
-		
+
+		Client *Addressableentityref `json:"Client,omitempty"`
+
 		RemoteIps *[]string `json:"remoteIps,omitempty"`
-		
+
 		ServiceName *string `json:"serviceName,omitempty"`
-		
+
 		Level *string `json:"level,omitempty"`
-		
+
 		Status *string `json:"status,omitempty"`
-		
+
 		EventDate *string `json:"eventDate,omitempty"`
-		
+
 		MessageInfo *Messageinfo `json:"messageInfo,omitempty"`
-		
+
 		Action *string `json:"action,omitempty"`
-		
+
 		Entity *Domainentityref `json:"entity,omitempty"`
-		
+
 		EntityType *string `json:"entityType,omitempty"`
-		
+
 		PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
-		
+
 		Context *map[string]string `json:"context,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		UserHomeOrgId: o.UserHomeOrgId,
-		
+
 		UserTrusteeOrgId: o.UserTrusteeOrgId,
-		
+
 		User: o.User,
-		
+
 		Client: o.Client,
-		
+
 		RemoteIps: o.RemoteIps,
-		
+
 		ServiceName: o.ServiceName,
-		
+
 		Level: o.Level,
-		
+
 		Status: o.Status,
-		
+
 		EventDate: EventDate,
-		
+
 		MessageInfo: o.MessageInfo,
-		
+
 		Action: o.Action,
-		
+
 		Entity: o.Entity,
-		
+
 		EntityType: o.EntityType,
-		
+
 		PropertyChanges: o.PropertyChanges,
-		
+
 		Context: o.Context,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -206,79 +207,78 @@ func (o *Qualityauditlogmessage) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := QualityauditlogmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if UserHomeOrgId, ok := QualityauditlogmessageMap["userHomeOrgId"].(string); ok {
 		o.UserHomeOrgId = &UserHomeOrgId
 	}
-    
+
 	if UserTrusteeOrgId, ok := QualityauditlogmessageMap["userTrusteeOrgId"].(string); ok {
 		o.UserTrusteeOrgId = &UserTrusteeOrgId
 	}
-    
+
 	if User, ok := QualityauditlogmessageMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
-	
-	if Client, ok := QualityauditlogmessageMap["client"].(map[string]interface{}); ok {
+
+	if Client, ok := QualityauditlogmessageMap["Client"].(map[string]interface{}); ok {
 		ClientString, _ := json.Marshal(Client)
 		json.Unmarshal(ClientString, &o.Client)
 	}
-	
+
 	if RemoteIps, ok := QualityauditlogmessageMap["remoteIps"].([]interface{}); ok {
 		RemoteIpsString, _ := json.Marshal(RemoteIps)
 		json.Unmarshal(RemoteIpsString, &o.RemoteIps)
 	}
-	
+
 	if ServiceName, ok := QualityauditlogmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-    
+
 	if Level, ok := QualityauditlogmessageMap["level"].(string); ok {
 		o.Level = &Level
 	}
-    
+
 	if Status, ok := QualityauditlogmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-    
+
 	if eventDateString, ok := QualityauditlogmessageMap["eventDate"].(string); ok {
 		EventDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventDateString)
 		o.EventDate = &EventDate
 	}
-	
+
 	if MessageInfo, ok := QualityauditlogmessageMap["messageInfo"].(map[string]interface{}); ok {
 		MessageInfoString, _ := json.Marshal(MessageInfo)
 		json.Unmarshal(MessageInfoString, &o.MessageInfo)
 	}
-	
+
 	if Action, ok := QualityauditlogmessageMap["action"].(string); ok {
 		o.Action = &Action
 	}
-    
+
 	if Entity, ok := QualityauditlogmessageMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)
 	}
-	
+
 	if EntityType, ok := QualityauditlogmessageMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-    
+
 	if PropertyChanges, ok := QualityauditlogmessageMap["propertyChanges"].([]interface{}); ok {
 		PropertyChangesString, _ := json.Marshal(PropertyChanges)
 		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)
 	}
-	
+
 	if Context, ok := QualityauditlogmessageMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
 	}
-	
 
 	return nil
 }

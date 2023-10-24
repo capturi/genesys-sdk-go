@@ -58,7 +58,7 @@ const (
 	APNortheast2 = "https://api.apne2.pure.cloud"
 	EUWest2      = "https://api.euw2.pure.cloud"
 	APSouth1     = "https://api.aps1.pure.cloud"
-	USEast2     = "https://api.use2.us-gov-pure.cloud"
+	USEast2      = "https://api.use2.us-gov-pure.cloud"
 )
 
 // RetryConfiguration has settings to configure the SDK retry logic
@@ -67,20 +67,20 @@ type RetryConfiguration struct {
 	RetryWaitMax    time.Duration   `json:"retry_wait_max,omitempty"`
 	RetryMax        int             `json:"retry_max,omitempty"`
 	RequestLogHook  RequestLogHook  `json:"request_log_hook,omitempty"`
-  	ResponseLogHook ResponseLogHook `json:"response_log_hook,omitempty"`
+	ResponseLogHook ResponseLogHook `json:"response_log_hook,omitempty"`
 }
 
 // ProxyConfiguration has settings to configure the SDK Proxy logic
 type ProxyConfiguration struct {
-	Protocol    string   `json:"protocol,omitempty"`
-	Host        string   `json:"host,omitempty"`
-	Port        string   `json:"port,omitempty"`
-	Auth  		*Auth     `json:"auth,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
+	Host     string `json:"host,omitempty"`
+	Port     string `json:"port,omitempty"`
+	Auth     *Auth  `json:"auth,omitempty"`
 }
 
 type Auth struct {
-	UserName    string   `json:"username,omitempty"`
-	Password    string   `json:"password,omitempty"`
+	UserName string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
 }
 
 type RequestLogHook func(*http.Request, int)
@@ -217,48 +217,47 @@ func (c *Configuration) updateConfigFromFile() error {
 	}
 
 	//proxy
-    if getConfigString("proxy", "host") != "" {
-                if isJson {
-                        proxyI := getObject("proxy")
-                        jsonbody, err := json.Marshal(proxyI)
-                        if err != nil {
-                                return err
-                        }
-                        proxyconf := ProxyConfiguration{}
-                        if err := json.Unmarshal(jsonbody, &proxyconf); err != nil {
-                                return err
-                        }
-                        c.ProxyConfiguration = &proxyconf
-                } else {
-                        proxyconf := ProxyConfiguration{}
-                        c.ProxyConfiguration = &proxyconf
+	if getConfigString("proxy", "host") != "" {
+		if isJson {
+			proxyI := getObject("proxy")
+			jsonbody, err := json.Marshal(proxyI)
+			if err != nil {
+				return err
+			}
+			proxyconf := ProxyConfiguration{}
+			if err := json.Unmarshal(jsonbody, &proxyconf); err != nil {
+				return err
+			}
+			c.ProxyConfiguration = &proxyconf
+		} else {
+			proxyconf := ProxyConfiguration{}
+			c.ProxyConfiguration = &proxyconf
 
-                        hostProxy := getConfigString("proxy", "host")
-                        if hostProxy != "" {
-                                c.ProxyConfiguration.Host = hostProxy
-                        }
+			hostProxy := getConfigString("proxy", "host")
+			if hostProxy != "" {
+				c.ProxyConfiguration.Host = hostProxy
+			}
 
-                        port := getConfigString("proxy", "port")
-                        if port != "" {
-                                c.ProxyConfiguration.Port = port
-                        }
+			port := getConfigString("proxy", "port")
+			if port != "" {
+				c.ProxyConfiguration.Port = port
+			}
 
-                        protocol := getConfigString("proxy", "protocol")
-                        if port != "" {
-                                c.ProxyConfiguration.Protocol = protocol
-                        }
+			protocol := getConfigString("proxy", "protocol")
+			if port != "" {
+				c.ProxyConfiguration.Protocol = protocol
+			}
 
-                        userName := getConfigString("proxy", "auth-username")
-                        password := getConfigString("proxy", "auth-password")
-                        if userName != "" && password != "" {
-                                auth := Auth{}
-                                c.ProxyConfiguration.Auth = &auth
-                                c.ProxyConfiguration.Auth.UserName = userName
-                                c.ProxyConfiguration.Auth.Password = password
-                        }
-                }
-        }
-
+			userName := getConfigString("proxy", "auth-username")
+			password := getConfigString("proxy", "auth-password")
+			if userName != "" && password != "" {
+				auth := Auth{}
+				c.ProxyConfiguration.Auth = &auth
+				c.ProxyConfiguration.Auth.UserName = userName
+				c.ProxyConfiguration.Auth.Password = password
+			}
+		}
+	}
 
 	// logging
 	logLevel := getConfigString("logging", "log_level")
@@ -333,7 +332,7 @@ func getConfigString(section, key string) string {
 }
 
 func getObject(section string) interface{} {
-        return viper.Get(fmt.Sprintf("%s", section))
+	return viper.Get(fmt.Sprintf("%s", section))
 }
 
 func getConfigBool(section, key string) bool {
@@ -361,13 +360,13 @@ func (c *Configuration) periodicConfigUpdater() {
 				}
 				if event.Op&fsnotify.Write == fsnotify.Write ||
 					event.Op&fsnotify.Create == fsnotify.Create {
-						if !c.AutoReloadConfig {
-							return
-						}
-						// Only act on updates to the config file.
-						if event.Name == c.ConfigFilePath {
-							_ = c.updateConfigFromFile()
-						}
+					if !c.AutoReloadConfig {
+						return
+					}
+					// Only act on updates to the config file.
+					if event.Name == c.ConfigFilePath {
+						_ = c.updateConfigFromFile()
+					}
 				}
 			case _, ok := <-watcher.Errors:
 				if !ok {
@@ -397,7 +396,7 @@ func getFileHash(filePath string) (string, error) {
 	return hex.EncodeToString(hasher.Sum(nil)), nil
 }
 
-// AuthorizeClientCredentials authorizes this Configuration instance using client credentials.
+// AuthorizeClientCredentials authorizes this Configuration instance using Client credentials.
 // The access token will be set automatically and API instances using this configuration object can now make authorized requests.
 func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret string) error {
 	authHostRegex := regexp.MustCompile(`(?i)\/\/api\.`)

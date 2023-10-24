@@ -1,12 +1,12 @@
 package platformclientv2
 
 import (
-	"strings"
-	"fmt"
-	"errors"
-	"net/url"
 	"encoding/json"
-	)
+	"errors"
+	"fmt"
+	"net/url"
+	"strings"
+)
 
 // UsageApi provides functions for API endpoints
 type UsageApi struct {
@@ -63,16 +63,15 @@ func (a UsageApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -84,7 +83,7 @@ func (a UsageApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -119,7 +118,7 @@ func (a UsageApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 
 // GetOauthClientUsageSummary invokes GET /api/v2/oauth/clients/{clientId}/usage/summary
 //
-// Get a summary of OAuth client API usage
+// # Get a summary of OAuth Client API usage
 //
 // After calling this method, you will then need to poll for the query results based on the returned execution Id
 func (a UsageApi) GetOauthClientUsageSummary(clientId string, days string) (*Usageexecutionresult, *APIResponse, error) {
@@ -147,18 +146,17 @@ func (a UsageApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["days"] = a.Configuration.APIClient.ParameterToString(days, "")
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	queryParams["days"] = a.Configuration.APIClient.ParameterToString(days, "")
+
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -170,7 +168,7 @@ func (a UsageApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -231,16 +229,15 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -252,7 +249,7 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -313,16 +310,15 @@ func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string) (*A
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -334,7 +330,7 @@ func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string) (*A
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -369,7 +365,7 @@ func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string) (*A
 
 // PostOauthClientUsageQuery invokes POST /api/v2/oauth/clients/{clientId}/usage/query
 //
-// Query for OAuth client API usage
+// # Query for OAuth Client API usage
 //
 // After calling this method, you will then need to poll for the query results based on the returned execution Id
 func (a UsageApi) PostOauthClientUsageQuery(clientId string, body Apiusageclientquery) (*Usageexecutionresult, *APIResponse, error) {
@@ -402,16 +398,15 @@ func (a UsageApi) PostOauthClientUsageQuery(clientId string, body Apiusageclient
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -423,7 +418,7 @@ func (a UsageApi) PostOauthClientUsageQuery(clientId string, body Apiusageclient
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -461,7 +456,7 @@ func (a UsageApi) PostOauthClientUsageQuery(clientId string, body Apiusageclient
 
 // PostUsageQuery invokes POST /api/v2/usage/query
 //
-// Query organization API Usage - 
+// Query organization API Usage -
 //
 // After calling this method, you will then need to poll for the query results based on the returned execution Id
 func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutionresult, *APIResponse, error) {
@@ -488,16 +483,15 @@ func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutio
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -509,7 +503,7 @@ func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutio
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -547,7 +541,7 @@ func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutio
 
 // PostUsageSimplesearch invokes POST /api/v2/usage/simplesearch
 //
-// Search organization API Usage - 
+// Search organization API Usage -
 //
 // After calling this method, you will then need to poll for the query results based on the returned execution Id
 func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecutionresult, *APIResponse, error) {
@@ -574,16 +568,15 @@ func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecut
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -595,7 +588,7 @@ func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecut
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -630,4 +623,3 @@ func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecut
 	}
 	return successPayload, response, err
 }
-

@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Knowledgeguestdocumentfeedback
-type Knowledgeguestdocumentfeedback struct { 
+type Knowledgeguestdocumentfeedback struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -45,7 +46,7 @@ type Knowledgeguestdocumentfeedback struct {
 	// Document - The document on which feedback was given.
 	Document *Knowledgeguestdocumentversionreference `json:"document,omitempty"`
 
-	// Application - The client application from which feedback was given.
+	// Application - The Client application from which feedback was given.
 	Application *Knowledgeguestsearchclientapplication `json:"application,omitempty"`
 }
 
@@ -78,9 +79,9 @@ func (o Knowledgeguestdocumentfeedback) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"DateCreated"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -89,7 +90,7 @@ func (o Knowledgeguestdocumentfeedback) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -108,67 +109,67 @@ func (o Knowledgeguestdocumentfeedback) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Knowledgeguestdocumentfeedback
-	
+
 	DateCreated := new(string)
 	if o.DateCreated != nil {
-		
+
 		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		DocumentVariation *Entityreference `json:"documentVariation,omitempty"`
-		
+
 		Rating *string `json:"rating,omitempty"`
-		
+
 		Reason *string `json:"reason,omitempty"`
-		
+
 		Comment *string `json:"comment,omitempty"`
-		
+
 		Search *Entityreference `json:"search,omitempty"`
-		
+
 		SessionId *string `json:"sessionId,omitempty"`
-		
+
 		DateCreated *string `json:"dateCreated,omitempty"`
-		
+
 		QueryType *string `json:"queryType,omitempty"`
-		
+
 		State *string `json:"state,omitempty"`
-		
+
 		Document *Knowledgeguestdocumentversionreference `json:"document,omitempty"`
-		
+
 		Application *Knowledgeguestsearchclientapplication `json:"application,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		DocumentVariation: o.DocumentVariation,
-		
+
 		Rating: o.Rating,
-		
+
 		Reason: o.Reason,
-		
+
 		Comment: o.Comment,
-		
+
 		Search: o.Search,
-		
+
 		SessionId: o.SessionId,
-		
+
 		DateCreated: DateCreated,
-		
+
 		QueryType: o.QueryType,
-		
+
 		State: o.State,
-		
+
 		Document: o.Document,
-		
+
 		Application: o.Application,
-		Alias:    (Alias)(o),
+		Alias:       (Alias)(o),
 	})
 }
 
@@ -178,60 +179,59 @@ func (o *Knowledgeguestdocumentfeedback) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := KnowledgeguestdocumentfeedbackMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if DocumentVariation, ok := KnowledgeguestdocumentfeedbackMap["documentVariation"].(map[string]interface{}); ok {
 		DocumentVariationString, _ := json.Marshal(DocumentVariation)
 		json.Unmarshal(DocumentVariationString, &o.DocumentVariation)
 	}
-	
+
 	if Rating, ok := KnowledgeguestdocumentfeedbackMap["rating"].(string); ok {
 		o.Rating = &Rating
 	}
-    
+
 	if Reason, ok := KnowledgeguestdocumentfeedbackMap["reason"].(string); ok {
 		o.Reason = &Reason
 	}
-    
+
 	if Comment, ok := KnowledgeguestdocumentfeedbackMap["comment"].(string); ok {
 		o.Comment = &Comment
 	}
-    
+
 	if Search, ok := KnowledgeguestdocumentfeedbackMap["search"].(map[string]interface{}); ok {
 		SearchString, _ := json.Marshal(Search)
 		json.Unmarshal(SearchString, &o.Search)
 	}
-	
+
 	if SessionId, ok := KnowledgeguestdocumentfeedbackMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-    
+
 	if dateCreatedString, ok := KnowledgeguestdocumentfeedbackMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
-	
+
 	if QueryType, ok := KnowledgeguestdocumentfeedbackMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
 	}
-    
+
 	if State, ok := KnowledgeguestdocumentfeedbackMap["state"].(string); ok {
 		o.State = &State
 	}
-    
+
 	if Document, ok := KnowledgeguestdocumentfeedbackMap["document"].(map[string]interface{}); ok {
 		DocumentString, _ := json.Marshal(Document)
 		json.Unmarshal(DocumentString, &o.Document)
 	}
-	
+
 	if Application, ok := KnowledgeguestdocumentfeedbackMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
 	}
-	
 
 	return nil
 }

@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Scimv2schemaattribute - A complex type that defines service provider attributes or subattributes and their qualities.
-type Scimv2schemaattribute struct { 
+type Scimv2schemaattribute struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Name - The name of the attribute.
@@ -41,7 +42,7 @@ type Scimv2schemaattribute struct {
 	// Returned - The circumstances under which an attribute and its values are returned in response to a GET, PUT, POST, or PATCH request.
 	Returned *string `json:"returned,omitempty"`
 
-	// Uniqueness - The method by which the service provider enforces the uniqueness of an attribute value. A server can reject a value by returning the HTTP response code 400 (Bad Request). A client can enforce uniqueness to a greater degree than the server provider enforces. For example, a client could make a value unique even though the server has \"uniqueness\" set to \"none\".
+	// Uniqueness - The method by which the service provider enforces the uniqueness of an attribute value. A server can reject a value by returning the HTTP response code 400 (Bad Request). A Client can enforce uniqueness to a greater degree than the server provider enforces. For example, a Client could make a value unique even though the server has \"uniqueness\" set to \"none\".
 	Uniqueness *string `json:"uniqueness,omitempty"`
 
 	// ReferenceTypes - The list of SCIM resource types that may be referenced. Only applies when \"type\" is set to \"reference\".
@@ -77,9 +78,9 @@ func (o Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -88,7 +89,7 @@ func (o Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -107,59 +108,59 @@ func (o Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Scimv2schemaattribute
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Name *string `json:"name,omitempty"`
-		
+
 		VarType *string `json:"type,omitempty"`
-		
+
 		SubAttributes *[]Scimv2schemaattribute `json:"subAttributes,omitempty"`
-		
+
 		MultiValued *bool `json:"multiValued,omitempty"`
-		
+
 		Description *string `json:"description,omitempty"`
-		
+
 		Required *bool `json:"required,omitempty"`
-		
+
 		CanonicalValues *[]string `json:"canonicalValues,omitempty"`
-		
+
 		CaseExact *bool `json:"caseExact,omitempty"`
-		
+
 		Mutability *string `json:"mutability,omitempty"`
-		
+
 		Returned *string `json:"returned,omitempty"`
-		
+
 		Uniqueness *string `json:"uniqueness,omitempty"`
-		
+
 		ReferenceTypes *[]string `json:"referenceTypes,omitempty"`
 		Alias
-	}{ 
+	}{
 		Name: o.Name,
-		
+
 		VarType: o.VarType,
-		
+
 		SubAttributes: o.SubAttributes,
-		
+
 		MultiValued: o.MultiValued,
-		
+
 		Description: o.Description,
-		
+
 		Required: o.Required,
-		
+
 		CanonicalValues: o.CanonicalValues,
-		
+
 		CaseExact: o.CaseExact,
-		
+
 		Mutability: o.Mutability,
-		
+
 		Returned: o.Returned,
-		
+
 		Uniqueness: o.Uniqueness,
-		
+
 		ReferenceTypes: o.ReferenceTypes,
-		Alias:    (Alias)(o),
+		Alias:          (Alias)(o),
 	})
 }
 
@@ -169,58 +170,57 @@ func (o *Scimv2schemaattribute) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Name, ok := Scimv2schemaattributeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if VarType, ok := Scimv2schemaattributeMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-    
+
 	if SubAttributes, ok := Scimv2schemaattributeMap["subAttributes"].([]interface{}); ok {
 		SubAttributesString, _ := json.Marshal(SubAttributes)
 		json.Unmarshal(SubAttributesString, &o.SubAttributes)
 	}
-	
+
 	if MultiValued, ok := Scimv2schemaattributeMap["multiValued"].(bool); ok {
 		o.MultiValued = &MultiValued
 	}
-    
+
 	if Description, ok := Scimv2schemaattributeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-    
+
 	if Required, ok := Scimv2schemaattributeMap["required"].(bool); ok {
 		o.Required = &Required
 	}
-    
+
 	if CanonicalValues, ok := Scimv2schemaattributeMap["canonicalValues"].([]interface{}); ok {
 		CanonicalValuesString, _ := json.Marshal(CanonicalValues)
 		json.Unmarshal(CanonicalValuesString, &o.CanonicalValues)
 	}
-	
+
 	if CaseExact, ok := Scimv2schemaattributeMap["caseExact"].(bool); ok {
 		o.CaseExact = &CaseExact
 	}
-    
+
 	if Mutability, ok := Scimv2schemaattributeMap["mutability"].(string); ok {
 		o.Mutability = &Mutability
 	}
-    
+
 	if Returned, ok := Scimv2schemaattributeMap["returned"].(string); ok {
 		o.Returned = &Returned
 	}
-    
+
 	if Uniqueness, ok := Scimv2schemaattributeMap["uniqueness"].(string); ok {
 		o.Uniqueness = &Uniqueness
 	}
-    
+
 	if ReferenceTypes, ok := Scimv2schemaattributeMap["referenceTypes"].([]interface{}); ok {
 		ReferenceTypesString, _ := json.Marshal(ReferenceTypes)
 		json.Unmarshal(ReferenceTypesString, &o.ReferenceTypes)
 	}
-	
 
 	return nil
 }

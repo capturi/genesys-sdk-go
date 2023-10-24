@@ -1,4 +1,5 @@
 package platformclientv2
+
 import (
 	"time"
 	"github.com/leekchan/timeutil"
@@ -9,7 +10,7 @@ import (
 )
 
 // Queueconversationeventtopiccobrowse
-type Queueconversationeventtopiccobrowse struct { 
+type Queueconversationeventtopiccobrowse struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// State
@@ -33,10 +34,10 @@ type Queueconversationeventtopiccobrowse struct {
 	// CobrowseSessionId - The co-browse session ID.
 	CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 
-	// CobrowseRole - This value identifies the role of the co-browse client within the co-browse session (a client is a sharer or a viewer).
+	// CobrowseRole - This value identifies the role of the co-browse Client within the co-browse session (a Client is a sharer or a viewer).
 	CobrowseRole *string `json:"cobrowseRole,omitempty"`
 
-	// Controlling - ID of co-browse participants for which this client has been granted control (list is empty if this client cannot control any shared pages).
+	// Controlling - ID of co-browse participants for which this Client has been granted control (list is empty if this Client cannot control any shared pages).
 	Controlling *[]string `json:"controlling,omitempty"`
 
 	// ViewerUrl - The URL that can be used to open co-browse session in web browser.
@@ -99,9 +100,9 @@ func (o Queueconversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ProviderEventTime","ConnectedTime","DisconnectedTime", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"ProviderEventTime", "ConnectedTime", "DisconnectedTime"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -110,7 +111,7 @@ func (o Queueconversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -129,111 +130,111 @@ func (o Queueconversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopiccobrowse
-	
+
 	ProviderEventTime := new(string)
 	if o.ProviderEventTime != nil {
-		
+
 		*ProviderEventTime = timeutil.Strftime(o.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ProviderEventTime = nil
 	}
-	
+
 	ConnectedTime := new(string)
 	if o.ConnectedTime != nil {
-		
+
 		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
-	
+
 	DisconnectedTime := new(string)
 	if o.DisconnectedTime != nil {
-		
+
 		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		State *string `json:"state,omitempty"`
-		
+
 		InitialState *string `json:"initialState,omitempty"`
-		
+
 		DisconnectType *string `json:"disconnectType,omitempty"`
-		
+
 		Id *string `json:"id,omitempty"`
-		
+
 		Self *Queueconversationeventtopicaddress `json:"self,omitempty"`
-		
+
 		RoomId *string `json:"roomId,omitempty"`
-		
+
 		CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
-		
+
 		CobrowseRole *string `json:"cobrowseRole,omitempty"`
-		
+
 		Controlling *[]string `json:"controlling,omitempty"`
-		
+
 		ViewerUrl *string `json:"viewerUrl,omitempty"`
-		
+
 		Provider *string `json:"provider,omitempty"`
-		
+
 		ScriptId *string `json:"scriptId,omitempty"`
-		
+
 		PeerId *string `json:"peerId,omitempty"`
-		
+
 		ProviderEventTime *string `json:"providerEventTime,omitempty"`
-		
+
 		ConnectedTime *string `json:"connectedTime,omitempty"`
-		
+
 		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
-		
+
 		Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
-		
+
 		AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
-		
+
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		Alias
-	}{ 
+	}{
 		State: o.State,
-		
+
 		InitialState: o.InitialState,
-		
+
 		DisconnectType: o.DisconnectType,
-		
+
 		Id: o.Id,
-		
+
 		Self: o.Self,
-		
+
 		RoomId: o.RoomId,
-		
+
 		CobrowseSessionId: o.CobrowseSessionId,
-		
+
 		CobrowseRole: o.CobrowseRole,
-		
+
 		Controlling: o.Controlling,
-		
+
 		ViewerUrl: o.ViewerUrl,
-		
+
 		Provider: o.Provider,
-		
+
 		ScriptId: o.ScriptId,
-		
+
 		PeerId: o.PeerId,
-		
+
 		ProviderEventTime: ProviderEventTime,
-		
+
 		ConnectedTime: ConnectedTime,
-		
+
 		DisconnectedTime: DisconnectedTime,
-		
+
 		Wrapup: o.Wrapup,
-		
+
 		AfterCallWork: o.AfterCallWork,
-		
+
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		Alias:    (Alias)(o),
+		Alias:                 (Alias)(o),
 	})
 }
 
@@ -243,90 +244,89 @@ func (o *Queueconversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if State, ok := QueueconversationeventtopiccobrowseMap["state"].(string); ok {
 		o.State = &State
 	}
-    
+
 	if InitialState, ok := QueueconversationeventtopiccobrowseMap["initialState"].(string); ok {
 		o.InitialState = &InitialState
 	}
-    
+
 	if DisconnectType, ok := QueueconversationeventtopiccobrowseMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-    
+
 	if Id, ok := QueueconversationeventtopiccobrowseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Self, ok := QueueconversationeventtopiccobrowseMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
 	}
-	
+
 	if RoomId, ok := QueueconversationeventtopiccobrowseMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-    
+
 	if CobrowseSessionId, ok := QueueconversationeventtopiccobrowseMap["cobrowseSessionId"].(string); ok {
 		o.CobrowseSessionId = &CobrowseSessionId
 	}
-    
+
 	if CobrowseRole, ok := QueueconversationeventtopiccobrowseMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-    
+
 	if Controlling, ok := QueueconversationeventtopiccobrowseMap["controlling"].([]interface{}); ok {
 		ControllingString, _ := json.Marshal(Controlling)
 		json.Unmarshal(ControllingString, &o.Controlling)
 	}
-	
+
 	if ViewerUrl, ok := QueueconversationeventtopiccobrowseMap["viewerUrl"].(string); ok {
 		o.ViewerUrl = &ViewerUrl
 	}
-    
+
 	if Provider, ok := QueueconversationeventtopiccobrowseMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-    
+
 	if ScriptId, ok := QueueconversationeventtopiccobrowseMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-    
+
 	if PeerId, ok := QueueconversationeventtopiccobrowseMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-    
+
 	if providerEventTimeString, ok := QueueconversationeventtopiccobrowseMap["providerEventTime"].(string); ok {
 		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
 		o.ProviderEventTime = &ProviderEventTime
 	}
-	
+
 	if connectedTimeString, ok := QueueconversationeventtopiccobrowseMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
 	}
-	
+
 	if disconnectedTimeString, ok := QueueconversationeventtopiccobrowseMap["disconnectedTime"].(string); ok {
 		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
 		o.DisconnectedTime = &DisconnectedTime
 	}
-	
+
 	if Wrapup, ok := QueueconversationeventtopiccobrowseMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
 	}
-	
+
 	if AfterCallWork, ok := QueueconversationeventtopiccobrowseMap["afterCallWork"].(map[string]interface{}); ok {
 		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
 		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
 	}
-	
+
 	if AfterCallWorkRequired, ok := QueueconversationeventtopiccobrowseMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-    
 
 	return nil
 }

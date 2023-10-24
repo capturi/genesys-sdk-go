@@ -17,11 +17,11 @@ import (
 
 // APIClient provides functions for making API requests
 type APIClient struct {
-	client        retryablehttp.Client
+	Client        retryablehttp.Client
 	configuration *Configuration
 }
 
-// NewAPIClient creates a new API client
+// NewAPIClient creates a new API Client
 func NewAPIClient(c *Configuration) APIClient {
 	timeout, err := time.ParseDuration("16s")
 	if err != nil {
@@ -33,7 +33,7 @@ func NewAPIClient(c *Configuration) APIClient {
 	client.HTTPClient.Timeout = timeout
 
 	return APIClient{
-		client:        *client,
+		Client:        *client,
 		configuration: c,
 	}
 }
@@ -136,19 +136,19 @@ func (c *APIClient) CallAPI(path string, method string,
 	}
 
 	if c.configuration.RetryConfiguration == nil {
-		c.client.RetryMax = 0
-		c.client.RetryWaitMax = 0
+		c.Client.RetryMax = 0
+		c.Client.RetryWaitMax = 0
 	} else {
-		c.client.RetryWaitMax = c.configuration.RetryConfiguration.RetryWaitMax
-		c.client.RetryWaitMin = c.configuration.RetryConfiguration.RetryWaitMin
-		c.client.RetryMax = c.configuration.RetryConfiguration.RetryMax
+		c.Client.RetryWaitMax = c.configuration.RetryConfiguration.RetryWaitMax
+		c.Client.RetryWaitMin = c.configuration.RetryConfiguration.RetryWaitMin
+		c.Client.RetryMax = c.configuration.RetryConfiguration.RetryMax
 		if c.configuration.RetryConfiguration.RequestLogHook != nil {
-			c.client.RequestLogHook = func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
+			c.Client.RequestLogHook = func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
 				c.configuration.RetryConfiguration.RequestLogHook(req, retryNumber)
 			}
 		}
 		if c.configuration.RetryConfiguration.ResponseLogHook != nil {
-			c.client.ResponseLogHook = func(_ retryablehttp.Logger, res *http.Response) {
+			c.Client.ResponseLogHook = func(_ retryablehttp.Logger, res *http.Response) {
 				c.configuration.RetryConfiguration.ResponseLogHook(res)
 			}
 		}
@@ -156,34 +156,34 @@ func (c *APIClient) CallAPI(path string, method string,
 
 	if c.configuration.ProxyConfiguration != nil {
 
-                var proxyUrl *url.URL
+		var proxyUrl *url.URL
 
-                if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
-                        proxyUrl = &url.URL{
-                                Scheme: c.configuration.ProxyConfiguration.Protocol,
-                                User: url.UserPassword(c.configuration.ProxyConfiguration.Auth.UserName,
-                                        c.configuration.ProxyConfiguration.Auth.Password),
-                                Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
-                        }
-                } else {
+		if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
+			proxyUrl = &url.URL{
+				Scheme: c.configuration.ProxyConfiguration.Protocol,
+				User: url.UserPassword(c.configuration.ProxyConfiguration.Auth.UserName,
+					c.configuration.ProxyConfiguration.Auth.Password),
+				Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
+			}
+		} else {
 
-                        urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
-                                c.configuration.ProxyConfiguration.Host + ":" +
-                                c.configuration.ProxyConfiguration.Port
-                        proxyUrl, _ = url.Parse(urlString)
-                }
+			urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
+				c.configuration.ProxyConfiguration.Host + ":" +
+				c.configuration.ProxyConfiguration.Port
+			proxyUrl, _ = url.Parse(urlString)
+		}
 
-                tr := &http.Transport{
-                        Proxy: http.ProxyURL(proxyUrl),
-                }
+		tr := &http.Transport{
+			Proxy: http.ProxyURL(proxyUrl),
+		}
 
-                c.client.HTTPClient.Transport = tr
-        }
+		c.Client.HTTPClient.Transport = tr
+	}
 
 	requestBody, _ := request.BodyBytes()
 
 	// Execute request
-	res, err := c.client.Do(&request)
+	res, err := c.Client.Do(&request)
 	if err != nil {
 		return nil, err
 	}

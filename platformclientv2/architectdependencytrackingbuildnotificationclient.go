@@ -1,20 +1,21 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
-// Architectdependencytrackingbuildnotificationclient - The client who initiated the change.
-type Architectdependencytrackingbuildnotificationclient struct { 
+// Architectdependencytrackingbuildnotificationclient - The Client who initiated the change.
+type Architectdependencytrackingbuildnotificationclient struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The ID of the client.
+	// Id - The ID of the Client.
 	Id *string `json:"id,omitempty"`
 
-	// Name - The name of the client, if available.
+	// Name - The name of the Client, if available.
 	Name *string `json:"name,omitempty"`
 }
 
@@ -47,9 +48,9 @@ func (o Architectdependencytrackingbuildnotificationclient) MarshalJSON() ([]byt
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -58,7 +59,7 @@ func (o Architectdependencytrackingbuildnotificationclient) MarshalJSON() ([]byt
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -77,19 +78,19 @@ func (o Architectdependencytrackingbuildnotificationclient) MarshalJSON() ([]byt
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Architectdependencytrackingbuildnotificationclient
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
-		Name: o.Name,
-		Alias:    (Alias)(o),
+
+		Name:  o.Name,
+		Alias: (Alias)(o),
 	})
 }
 
@@ -99,15 +100,14 @@ func (o *Architectdependencytrackingbuildnotificationclient) UnmarshalJSON(b []b
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := ArchitectdependencytrackingbuildnotificationclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := ArchitectdependencytrackingbuildnotificationclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
 
 	return nil
 }

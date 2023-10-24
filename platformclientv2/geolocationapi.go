@@ -1,12 +1,12 @@
 package platformclientv2
 
 import (
-	"strings"
-	"fmt"
-	"errors"
-	"net/url"
 	"encoding/json"
-	)
+	"errors"
+	"fmt"
+	"net/url"
+	"strings"
+)
 
 // GeolocationApi provides functions for API endpoints
 type GeolocationApi struct {
@@ -41,7 +41,6 @@ func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIRes
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
 	formParams := url.Values{}
@@ -51,16 +50,15 @@ func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIRes
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -72,7 +70,7 @@ func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIRes
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -139,16 +137,15 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -160,7 +157,7 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -220,16 +217,15 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -241,7 +237,7 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -279,9 +275,9 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 
 // PatchUserGeolocation invokes PATCH /api/v2/users/{userId}/geolocations/{clientId}
 //
-// Patch a user's Geolocation
+// # Patch a user's Geolocation
 //
-// The geolocation object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the client as the user&#39;s primary geolocation source.  Option 2: Provide the &#39;latitude&#39; and &#39;longitude&#39; values.  This will enqueue an asynchronous update of the &#39;city&#39;, &#39;region&#39;, and &#39;country&#39;, generating a notification. A subsequent GET operation will include the new values for &#39;city&#39;, &#39;region&#39; and &#39;country&#39;.  Option 3:  Provide the &#39;city&#39;, &#39;region&#39;, &#39;country&#39; values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
+// The geolocation object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the Client as the user&#39;s primary geolocation source.  Option 2: Provide the &#39;latitude&#39; and &#39;longitude&#39; values.  This will enqueue an asynchronous update of the &#39;city&#39;, &#39;region&#39;, and &#39;country&#39;, generating a notification. A subsequent GET operation will include the new values for &#39;city&#39;, &#39;region&#39; and &#39;country&#39;.  Option 3:  Provide the &#39;city&#39;, &#39;region&#39;, &#39;country&#39; values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the Client as primary and provide latitude and longitude values.
 func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, body Geolocation) (*Geolocation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -318,16 +314,15 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 	// authentication (PureCloud OAuth) required
 
 	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	if a.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + a.Configuration.AccessToken
 	}
 	// add default headers if any
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
 
-	// Find an replace keys that were altered to avoid clashes with go keywords 
+	// Find an replace keys that were altered to avoid clashes with go keywords
 	correctedQueryParams := make(map[string]string)
 	for k, v := range queryParams {
 		if k == "varType" {
@@ -339,7 +334,7 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -374,4 +369,3 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 	}
 	return successPayload, response, err
 }
-

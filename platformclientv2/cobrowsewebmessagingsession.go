@@ -1,15 +1,16 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Cobrowsewebmessagingsession
-type Cobrowsewebmessagingsession struct { 
+type Cobrowsewebmessagingsession struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -21,7 +22,7 @@ type Cobrowsewebmessagingsession struct {
 	// JoinCode - Cobrowse session join code
 	JoinCode *string `json:"joinCode,omitempty"`
 
-	// WebsocketUrl - WebSocket URL for the JS client
+	// WebsocketUrl - WebSocket URL for the JS Client
 	WebsocketUrl *string `json:"websocketUrl,omitempty"`
 
 	// DateOfferEnds - Date when Cobrowse Offer Expires. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -63,9 +64,9 @@ func (o Cobrowsewebmessagingsession) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateOfferEnds", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"DateOfferEnds"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -74,7 +75,7 @@ func (o Cobrowsewebmessagingsession) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -93,47 +94,47 @@ func (o Cobrowsewebmessagingsession) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Cobrowsewebmessagingsession
-	
+
 	DateOfferEnds := new(string)
 	if o.DateOfferEnds != nil {
-		
+
 		*DateOfferEnds = timeutil.Strftime(o.DateOfferEnds, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateOfferEnds = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		JoinCode *string `json:"joinCode,omitempty"`
-		
+
 		WebsocketUrl *string `json:"websocketUrl,omitempty"`
-		
+
 		DateOfferEnds *string `json:"dateOfferEnds,omitempty"`
-		
+
 		CommunicationType *string `json:"communicationType,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		JoinCode: o.JoinCode,
-		
+
 		WebsocketUrl: o.WebsocketUrl,
-		
+
 		DateOfferEnds: DateOfferEnds,
-		
+
 		CommunicationType: o.CommunicationType,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -143,36 +144,35 @@ func (o *Cobrowsewebmessagingsession) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := CobrowsewebmessagingsessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := CobrowsewebmessagingsessionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if JoinCode, ok := CobrowsewebmessagingsessionMap["joinCode"].(string); ok {
 		o.JoinCode = &JoinCode
 	}
-    
+
 	if WebsocketUrl, ok := CobrowsewebmessagingsessionMap["websocketUrl"].(string); ok {
 		o.WebsocketUrl = &WebsocketUrl
 	}
-    
+
 	if dateOfferEndsString, ok := CobrowsewebmessagingsessionMap["dateOfferEnds"].(string); ok {
 		DateOfferEnds, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateOfferEndsString)
 		o.DateOfferEnds = &DateOfferEnds
 	}
-	
+
 	if CommunicationType, ok := CobrowsewebmessagingsessionMap["communicationType"].(string); ok {
 		o.CommunicationType = &CommunicationType
 	}
-    
+
 	if SelfUri, ok := CobrowsewebmessagingsessionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

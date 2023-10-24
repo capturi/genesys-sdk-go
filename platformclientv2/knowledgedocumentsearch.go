@@ -1,14 +1,15 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Knowledgedocumentsearch
-type Knowledgedocumentsearch struct { 
+type Knowledgedocumentsearch struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Query - Query to search content in the knowledge base. Maximum of 30 records per query can be fetched.
@@ -35,7 +36,7 @@ type Knowledgedocumentsearch struct {
 	// Results - Documents matching the search query.
 	Results *[]Knowledgedocumentsearchresult `json:"results,omitempty"`
 
-	// Application - The client application details from which search happened.
+	// Application - The Client application details from which search happened.
 	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 
 	// ConversationContext - Conversation context information if the search is initiated in the context of a conversation.
@@ -71,9 +72,9 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -82,7 +83,7 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -101,51 +102,51 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Knowledgedocumentsearch
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Query *string `json:"query,omitempty"`
-		
+
 		PageSize *int `json:"pageSize,omitempty"`
-		
+
 		PageNumber *int `json:"pageNumber,omitempty"`
-		
+
 		SearchId *string `json:"searchId,omitempty"`
-		
+
 		Total *int `json:"total,omitempty"`
-		
+
 		PageCount *int `json:"pageCount,omitempty"`
-		
+
 		QueryType *string `json:"queryType,omitempty"`
-		
+
 		Results *[]Knowledgedocumentsearchresult `json:"results,omitempty"`
-		
+
 		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
-		
+
 		ConversationContext *Knowledgeconversationcontextresponse `json:"conversationContext,omitempty"`
 		Alias
-	}{ 
+	}{
 		Query: o.Query,
-		
+
 		PageSize: o.PageSize,
-		
+
 		PageNumber: o.PageNumber,
-		
+
 		SearchId: o.SearchId,
-		
+
 		Total: o.Total,
-		
+
 		PageCount: o.PageCount,
-		
+
 		QueryType: o.QueryType,
-		
+
 		Results: o.Results,
-		
+
 		Application: o.Application,
-		
+
 		ConversationContext: o.ConversationContext,
-		Alias:    (Alias)(o),
+		Alias:               (Alias)(o),
 	})
 }
 
@@ -155,54 +156,53 @@ func (o *Knowledgedocumentsearch) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Query, ok := KnowledgedocumentsearchMap["query"].(string); ok {
 		o.Query = &Query
 	}
-    
+
 	if PageSize, ok := KnowledgedocumentsearchMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
-	
+
 	if PageNumber, ok := KnowledgedocumentsearchMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
-	
+
 	if SearchId, ok := KnowledgedocumentsearchMap["searchId"].(string); ok {
 		o.SearchId = &SearchId
 	}
-    
+
 	if Total, ok := KnowledgedocumentsearchMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
-	
+
 	if PageCount, ok := KnowledgedocumentsearchMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
-	
+
 	if QueryType, ok := KnowledgedocumentsearchMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
 	}
-    
+
 	if Results, ok := KnowledgedocumentsearchMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)
 	}
-	
+
 	if Application, ok := KnowledgedocumentsearchMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
 	}
-	
+
 	if ConversationContext, ok := KnowledgedocumentsearchMap["conversationContext"].(map[string]interface{}); ok {
 		ConversationContextString, _ := json.Marshal(ConversationContext)
 		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
-	
 
 	return nil
 }

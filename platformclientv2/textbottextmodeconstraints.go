@@ -1,20 +1,21 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
 // Textbottextmodeconstraints - Mode constraints to observe when operating on a bot flow.
-type Textbottextmodeconstraints struct { 
+type Textbottextmodeconstraints struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// LanguagePreferences - The list of language preferences by their ISO language code.
 	LanguagePreferences *[]string `json:"languagePreferences,omitempty"`
 
-	// NoInputTimeoutMilliseconds - The amount of time, in milliseconds, before the client should send the 'NoInput' event  to trigger the \"no input\" bot response and handling on digital channels.  Note: This optional field will only be returned for 'Digital Bot Flow' turns.
+	// NoInputTimeoutMilliseconds - The amount of time, in milliseconds, before the Client should send the 'NoInput' event  to trigger the \"no input\" bot response and handling on digital channels.  Note: This optional field will only be returned for 'Digital Bot Flow' turns.
 	NoInputTimeoutMilliseconds *int `json:"noInputTimeoutMilliseconds,omitempty"`
 }
 
@@ -47,9 +48,9 @@ func (o Textbottextmodeconstraints) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -58,7 +59,7 @@ func (o Textbottextmodeconstraints) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -77,19 +78,19 @@ func (o Textbottextmodeconstraints) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Textbottextmodeconstraints
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		LanguagePreferences *[]string `json:"languagePreferences,omitempty"`
-		
+
 		NoInputTimeoutMilliseconds *int `json:"noInputTimeoutMilliseconds,omitempty"`
 		Alias
-	}{ 
+	}{
 		LanguagePreferences: o.LanguagePreferences,
-		
+
 		NoInputTimeoutMilliseconds: o.NoInputTimeoutMilliseconds,
-		Alias:    (Alias)(o),
+		Alias:                      (Alias)(o),
 	})
 }
 
@@ -99,17 +100,16 @@ func (o *Textbottextmodeconstraints) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if LanguagePreferences, ok := TextbottextmodeconstraintsMap["languagePreferences"].([]interface{}); ok {
 		LanguagePreferencesString, _ := json.Marshal(LanguagePreferences)
 		json.Unmarshal(LanguagePreferencesString, &o.LanguagePreferences)
 	}
-	
+
 	if NoInputTimeoutMilliseconds, ok := TextbottextmodeconstraintsMap["noInputTimeoutMilliseconds"].(float64); ok {
 		NoInputTimeoutMillisecondsInt := int(NoInputTimeoutMilliseconds)
 		o.NoInputTimeoutMilliseconds = &NoInputTimeoutMillisecondsInt
 	}
-	
 
 	return nil
 }

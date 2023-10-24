@@ -1,19 +1,20 @@
 package platformclientv2
+
 import (
-	"time"
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Oauthauthorization
-type Oauthauthorization struct { 
+type Oauthauthorization struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Client
-	Client *Oauthclient `json:"client,omitempty"`
+	Client *Oauthclient `json:"Client,omitempty"`
 
 	// Scope
 	Scope *[]string `json:"scope,omitempty"`
@@ -75,9 +76,9 @@ func (o Oauthauthorization) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"DateCreated", "DateModified"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -86,7 +87,7 @@ func (o Oauthauthorization) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -105,71 +106,71 @@ func (o Oauthauthorization) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Oauthauthorization
-	
+
 	DateCreated := new(string)
 	if o.DateCreated != nil {
-		
+
 		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
-	
+
 	DateModified := new(string)
 	if o.DateModified != nil {
-		
+
 		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
-	
-	return json.Marshal(&struct { 
-		Client *Oauthclient `json:"client,omitempty"`
-		
+
+	return json.Marshal(&struct {
+		Client *Oauthclient `json:"Client,omitempty"`
+
 		Scope *[]string `json:"scope,omitempty"`
-		
+
 		Roles *[]string `json:"roles,omitempty"`
-		
+
 		ResourceOwner *Domainentityref `json:"resourceOwner,omitempty"`
-		
+
 		DateCreated *string `json:"dateCreated,omitempty"`
-		
+
 		DateModified *string `json:"dateModified,omitempty"`
-		
+
 		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
-		
+
 		ModifiedBy *Domainentityref `json:"modifiedBy,omitempty"`
-		
+
 		Pending *bool `json:"pending,omitempty"`
-		
+
 		State *string `json:"state,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Client: o.Client,
-		
+
 		Scope: o.Scope,
-		
+
 		Roles: o.Roles,
-		
+
 		ResourceOwner: o.ResourceOwner,
-		
+
 		DateCreated: DateCreated,
-		
+
 		DateModified: DateModified,
-		
+
 		CreatedBy: o.CreatedBy,
-		
+
 		ModifiedBy: o.ModifiedBy,
-		
+
 		Pending: o.Pending,
-		
+
 		State: o.State,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -179,59 +180,58 @@ func (o *Oauthauthorization) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
-	if Client, ok := OauthauthorizationMap["client"].(map[string]interface{}); ok {
+
+	if Client, ok := OauthauthorizationMap["Client"].(map[string]interface{}); ok {
 		ClientString, _ := json.Marshal(Client)
 		json.Unmarshal(ClientString, &o.Client)
 	}
-	
+
 	if Scope, ok := OauthauthorizationMap["scope"].([]interface{}); ok {
 		ScopeString, _ := json.Marshal(Scope)
 		json.Unmarshal(ScopeString, &o.Scope)
 	}
-	
+
 	if Roles, ok := OauthauthorizationMap["roles"].([]interface{}); ok {
 		RolesString, _ := json.Marshal(Roles)
 		json.Unmarshal(RolesString, &o.Roles)
 	}
-	
+
 	if ResourceOwner, ok := OauthauthorizationMap["resourceOwner"].(map[string]interface{}); ok {
 		ResourceOwnerString, _ := json.Marshal(ResourceOwner)
 		json.Unmarshal(ResourceOwnerString, &o.ResourceOwner)
 	}
-	
+
 	if dateCreatedString, ok := OauthauthorizationMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
-	
+
 	if dateModifiedString, ok := OauthauthorizationMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
-	
+
 	if CreatedBy, ok := OauthauthorizationMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
 	}
-	
+
 	if ModifiedBy, ok := OauthauthorizationMap["modifiedBy"].(map[string]interface{}); ok {
 		ModifiedByString, _ := json.Marshal(ModifiedBy)
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
-	
+
 	if Pending, ok := OauthauthorizationMap["pending"].(bool); ok {
 		o.Pending = &Pending
 	}
-    
+
 	if State, ok := OauthauthorizationMap["state"].(string); ok {
 		o.State = &State
 	}
-    
+
 	if SelfUri, ok := OauthauthorizationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }

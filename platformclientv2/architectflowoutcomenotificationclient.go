@@ -1,20 +1,21 @@
 package platformclientv2
+
 import (
+	"encoding/json"
 	"github.com/leekchan/timeutil"
 	"reflect"
-	"encoding/json"
 	"strconv"
 	"strings"
 )
 
-// Architectflowoutcomenotificationclient - The client who initiated the change.
-type Architectflowoutcomenotificationclient struct { 
+// Architectflowoutcomenotificationclient - The Client who initiated the change.
+type Architectflowoutcomenotificationclient struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The ID of the client.
+	// Id - The ID of the Client.
 	Id *string `json:"id,omitempty"`
 
-	// Name - The name of the client, if available.
+	// Name - The name of the Client, if available.
 	Name *string `json:"name,omitempty"`
 }
 
@@ -47,9 +48,9 @@ func (o Architectflowoutcomenotificationclient) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -58,7 +59,7 @@ func (o Architectflowoutcomenotificationclient) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -77,19 +78,19 @@ func (o Architectflowoutcomenotificationclient) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Architectflowoutcomenotificationclient
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
-		Name: o.Name,
-		Alias:    (Alias)(o),
+
+		Name:  o.Name,
+		Alias: (Alias)(o),
 	})
 }
 
@@ -99,15 +100,14 @@ func (o *Architectflowoutcomenotificationclient) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := ArchitectflowoutcomenotificationclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := ArchitectflowoutcomenotificationclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
 
 	return nil
 }
