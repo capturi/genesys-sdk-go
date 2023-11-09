@@ -1,4 +1,4 @@
-module github.com/capturi/genesys-sdk-go/v115
+module github.com/mypurecloud/platform-client-sdk-go/v116
 
 go 1.21
 
